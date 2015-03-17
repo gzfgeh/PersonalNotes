@@ -3,11 +3,15 @@ package com.gzfgeh.personalnote;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.nineoldandroids.view.ViewHelper;
+
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.DrawerLayout.DrawerListener;
 import android.support.v7.app.ActionBarActivity;
 import android.annotation.SuppressLint;
 import android.graphics.BitmapFactory;
@@ -41,6 +45,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 	private int currentIndex;
 	private int cursorOffset;
 	private int pageOffset;
+	private DrawerLayout drawerLayout;
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,6 +100,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 		titleText = (TextView) findViewById(R.id.title_text);
 		cursorView = (ImageView) findViewById(R.id.cursor);
 		viewPager = (ViewPager) findViewById(R.id.container);
+		drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		textFragment = new TextFragment();
 		soundsFragment = new SoundsFragment();
 		photoFragment = new PhotoFragment();
@@ -116,7 +122,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 		
 		titleText.setText(R.string.text);
 		textView.setTextColor(getResources().getColor(R.color.title_bg));
-		
+		drawerLayoutEvent();
 	}
 
 
@@ -211,5 +217,63 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 		animation.setFillAfter(true);
 		animation.setDuration(200);
 		cursorView.startAnimation(animation);
+	}
+	
+	private void drawerLayoutEvent(){
+		drawerLayout.setDrawerListener(new DrawerListener() {
+			
+			@Override
+			public void onDrawerStateChanged(int arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void onDrawerSlide(View drawerView, float slideOffset) {
+				// TODO Auto-generated method stub
+				View mContent = drawerLayout.getChildAt(0);  
+                View mMenu = drawerView;  
+                float scale = 1 - slideOffset;  
+                float rightScale = 0.8f + scale * 0.2f;  
+  
+                if (drawerView.getTag().equals("LEFT"))  
+                {  
+  
+                    float leftScale = 1 - 0.3f * scale;  
+  
+                    ViewHelper.setScaleX(mMenu, leftScale);  
+                    ViewHelper.setScaleY(mMenu, leftScale);  
+                    ViewHelper.setAlpha(mMenu, 0.6f + 0.4f * (1 - scale));  
+                    ViewHelper.setTranslationX(mContent,  
+                            mMenu.getMeasuredWidth() * (1 - scale));  
+                    ViewHelper.setPivotX(mContent, 0);  
+                    ViewHelper.setPivotY(mContent,  
+                            mContent.getMeasuredHeight() / 2);  
+                    mContent.invalidate();  
+                    ViewHelper.setScaleX(mContent, rightScale);  
+                    ViewHelper.setScaleY(mContent, rightScale);  
+                } else{  
+                    ViewHelper.setTranslationX(mContent,  
+                            -mMenu.getMeasuredWidth() * slideOffset);  
+                    ViewHelper.setPivotX(mContent, mContent.getMeasuredWidth());  
+                    ViewHelper.setPivotY(mContent,  
+                            mContent.getMeasuredHeight() / 2);  
+                    mContent.invalidate();  
+                    ViewHelper.setScaleX(mContent, rightScale);  
+                    ViewHelper.setScaleY(mContent, rightScale);  
+                }  
+			}
+			
+			@Override
+			public void onDrawerOpened(View arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void onDrawerClosed(View drawerView) {
+				
+			}
+		});
 	}
 }
