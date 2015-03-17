@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bottom_bg">
+    
+    <ImageView 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/cursor"
+        android:src="@drawable/cursor"
+        android:scaleType="matrix"/>
+    
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+        
+	    <RelativeLayout 
+		    android:layout_width="0dp"
+		    android:layout_height="fill_parent"
+		    android:layout_weight="1"
+		    android:id="@+id/text_layout">
+		    
+		    <LinearLayout 
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_centerVertical="true"
+		        android:orientation="vertical">
+		        
+		        <ImageView 
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_gravity="center_horizontal"
+		            android:background="@drawable/text"/>
+		        
+		        <TextView 
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_gravity="center_horizontal"
+		            android:id="@+id/text_msg"
+		            android:text="@string/text"/>
+		    </LinearLayout>
+		</RelativeLayout>
+		
+		<RelativeLayout 
+		    android:layout_width="0dp"
+		    android:layout_height="fill_parent"
+		    android:layout_weight="1"
+		    android:id="@+id/photo_layout">
+		    
+		    <LinearLayout 
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_centerVertical="true"
+		        android:orientation="vertical">
+		        
+		        <ImageView 
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_gravity="center_horizontal"
+		            android:background="@drawable/photo"/>
+		        
+		        <TextView 
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_gravity="center_horizontal"
+		            android:id="@+id/photo_msg"
+		            android:text="@string/photo"/>
+		    </LinearLayout>
+		</RelativeLayout>
+		
+		<RelativeLayout 
+		    android:layout_width="0dp"
+		    android:layout_height="fill_parent"
+		    android:layout_weight="1"
+		    android:id="@+id/sounds_layout">
+		    
+		    <LinearLayout 
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_centerVertical="true"
+		        android:orientation="vertical">
+		        
+		        <ImageView 
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_gravity="center_horizontal"
+		            android:background="@drawable/sounds"/>
+		        
+		        <TextView 
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_gravity="center_horizontal"
+		            android:id="@+id/sounds_msg"
+		            android:text="@string/sounds"/>
+		    </LinearLayout>
+		</RelativeLayout>
+		
+		<RelativeLayout 
+		    android:layout_width="0dp"
+		    android:layout_height="fill_parent"
+		    android:layout_weight="1"
+		    android:id="@+id/movie_layout">
+		    
+		    <LinearLayout 
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_centerVertical="true"
+		        android:orientation="vertical">
+		        
+		        <ImageView 
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_gravity="center_horizontal"
+		            android:background="@drawable/movie"/>
+		        
+		        <TextView 
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_gravity="center_horizontal"
+		            android:id="@+id/movie_msg"
+		            android:text="@string/movie"/>
+		    </LinearLayout>
+		</RelativeLayout>
+    </LinearLayout>
+	
+	
+</LinearLayout>
