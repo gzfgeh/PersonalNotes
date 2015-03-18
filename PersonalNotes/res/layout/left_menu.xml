@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#FFFFFF">
+    android:background="@color/bottom_bg">
     
 	<RelativeLayout 
 	    android:layout_width="fill_parent"
@@ -17,6 +17,7 @@
 	        android:layout_alignParentLeft="true"
 	        android:layout_margin="20dp"
 	        android:layout_centerVertical="true"
+	        android:clickable="true"
 	        android:src="@drawable/drawer_layout_bg"/>
 
 	    <TextView

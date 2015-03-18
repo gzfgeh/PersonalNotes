@@ -2,7 +2,10 @@ package com.gzfgeh.personalnote;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import com.gzfgeh.animation.MenuDrawLayout;
+import com.gzfgeh.animation.RoundImageView;
+
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -11,6 +14,8 @@ import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.os.Bundle;
@@ -43,6 +48,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 	private int pageWidth;
 	private float animationStart, animationEnd;
 	private DrawerLayout drawerLayout;
+	private RoundImageView imageView;
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,6 +104,9 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 		cursorView = (ImageView) findViewById(R.id.cursor);
 		viewPager = (ViewPager) findViewById(R.id.container);
 		drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+		imageView = (RoundImageView) getSupportFragmentManager().
+				findFragmentById(R.id.left_menu).getView().findViewById(R.id.self_view);
+		
 		textFragment = new TextFragment();
 		soundsFragment = new SoundsFragment();
 		photoFragment = new PhotoFragment();
@@ -217,6 +226,22 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 			titleText.setText(R.string.movie);
 			movieView.setTextColor(getResources().getColor(R.color.title_bg));
 			break;
+		}
+	}
+	
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+		// TODO Auto-generated method stub
+		if (requestCode == LeftMenu.REQUEST_CODE){
+			if (resultCode == RESULT_OK){
+				
+				Intent intent = getIntent();
+				if (intent != null){
+					byte [] bis=intent.getByteArrayExtra("Bitmap");  
+		            Bitmap bitmap=BitmapFactory.decodeByteArray(bis, 0, bis.length);  
+		            imageView.setImageBitmap(bitmap);
+				}
+			}
 		}
 	}
 }

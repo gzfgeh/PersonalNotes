@@ -1029,7 +1029,7 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f050016;
         public static final int action_menu_presenter=0x7f050017;
         public static final int action_mode_close_button=0x7f050026;
-        public static final int action_settings=0x7f050058;
+        public static final int action_settings=0x7f05005b;
         public static final int activity_chooser_view_content=0x7f050027;
         public static final int always=0x7f05000b;
         public static final int beginning=0x7f050011;
@@ -1048,6 +1048,7 @@ containing a value of this type.
         public static final int end=0x7f050013;
         public static final int expand_activities_button=0x7f050028;
         public static final int expanded_menu=0x7f05002e;
+        public static final int get_photo=0x7f050059;
         public static final int home=0x7f050014;
         public static final int homeAsUp=0x7f050005;
         public static final int icon=0x7f05002c;
@@ -1060,6 +1061,7 @@ containing a value of this type.
         public static final int listMode=0x7f050001;
         public static final int list_item=0x7f05002b;
         public static final int login_view=0x7f050055;
+        public static final int make_photo=0x7f05005a;
         public static final int middle=0x7f050012;
         public static final int movie_fragment_layout=0x7f050053;
         public static final int movie_layout=0x7f05004e;
@@ -1103,6 +1105,7 @@ containing a value of this type.
         public static final int title=0x7f05002d;
         public static final int title_text=0x7f050051;
         public static final int top_action_bar=0x7f050022;
+        public static final int transparent_cancle=0x7f050058;
         public static final int up=0x7f050023;
         public static final int useLogo=0x7f050003;
         public static final int user_name=0x7f050044;
@@ -1168,6 +1171,7 @@ containing a value of this type.
         public static final int sounds_fragment=0x7f03001f;
         public static final int support_simple_spinner_dropdown_item=0x7f030020;
         public static final int text_fragment=0x7f030021;
+        public static final int transparent_activity=0x7f030022;
     }
     public static final class menu {
         public static final int main=0x7f0c0000;
@@ -1216,9 +1220,12 @@ containing a value of this type.
         public static final int action_settings=0x7f0a000f;
         public static final int app_name=0x7f0a000d;
         public static final int back=0x7f0a0010;
+        public static final int cancle=0x7f0a001a;
         public static final int edit=0x7f0a0012;
+        public static final int get_photo=0x7f0a001b;
         public static final int gzfgeh=0x7f0a0017;
         public static final int hello_world=0x7f0a000e;
+        public static final int make_photo=0x7f0a001c;
         public static final int movie=0x7f0a0016;
         public static final int other_login=0x7f0a0019;
         public static final int photo=0x7f0a0014;
