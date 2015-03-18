@@ -2,6 +2,6 @@
 <resources>
     <color name="title_bg">#33CCFF</color>
     <color name="title_btn_text_color">#FFF</color>
-    <color name="bottom_bg">#FFFFFF</color>
+    <color name="bottom_bg">#E0E0E0</color>
     <color name="text_color">#3300FF</color>
 </resources>

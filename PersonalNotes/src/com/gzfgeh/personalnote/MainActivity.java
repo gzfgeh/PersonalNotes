@@ -2,17 +2,13 @@ package com.gzfgeh.personalnote;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import com.gzfgeh.animation.MenuDrawLayout;
-import com.nineoldandroids.view.ViewHelper;
-
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v4.widget.DrawerLayout.DrawerListener;
 import android.support.v7.app.ActionBarActivity;
 import android.annotation.SuppressLint;
 import android.graphics.BitmapFactory;
@@ -43,9 +39,9 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 	private List<Fragment> fragments = new ArrayList<Fragment>();
 	private ImageView cursorView;
 	private int cursorWidth;
-	private int currentIndex;
 	private int cursorOffset;
-	private int pageOffset;
+	private int pageWidth;
+	private float animationStart, animationEnd;
 	private DrawerLayout drawerLayout;
 	
     @Override
@@ -77,7 +73,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
         }
     }
     
-	@SuppressLint("ResourceAsColor") private void resetSelected(){
+    @SuppressLint("ResourceAsColor") private void resetSelected(){
 		textView.setTextColor(R.color.bottom_bg);
 		soundsView.setTextColor(R.color.bottom_bg);
 		photoView.setTextColor(R.color.bottom_bg);
@@ -119,7 +115,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 		Matrix matrix = new Matrix();
 		matrix.postTranslate(cursorOffset, 0);
 		cursorView.setImageMatrix(matrix);
-		pageOffset = cursorOffset * 2 + cursorWidth;
+		pageWidth = cursorOffset * 2 + cursorWidth;
 		
 		titleText.setText(R.string.text);
 		textView.setTextColor(getResources().getColor(R.color.title_bg));
@@ -178,16 +174,33 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 
 
 	@Override
-	public void onPageScrolled(int arg0, float arg1, int arg2) {
+	public void onPageScrolled(int currentPage, float percentage, int percentagePix) {
 		// TODO Auto-generated method stub
+		Animation animation = null;
+		if (percentage == 0){
+			animationStart = currentPage * pageWidth;
+			animationEnd = animationStart;
+			animation = new TranslateAnimation(animationStart, animationEnd, 0, 0);
+			
+		}else{
+			animationStart = animationEnd;
+			animationEnd = (currentPage + percentage) * pageWidth;
+			animation = new TranslateAnimation(animationStart, animationEnd, 0, 0);
+		}
 		
+//		if (preIndex < currentPage){
+//		}else{
+//			animation = new TranslateAnimation(currentPage * pageWidth, -(currentPage + percentage) * pageWidth, 0, 0);
+//		}
+		animation.setFillAfter(true);
+		cursorView.startAnimation(animation);
 	}
 
 
 	@Override
 	public void onPageSelected(int position) {
 		// TODO Auto-generated method stub
-		cursorViewAnimation(position);
+		//cursorViewAnimation(position);
 		resetSelected();
 		
 		switch (position) {
@@ -210,13 +223,5 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 			movieView.setTextColor(getResources().getColor(R.color.title_bg));
 			break;
 		}
-	}
-
-	private void cursorViewAnimation(int position) {
-		Animation animation = new TranslateAnimation(currentIndex * pageOffset, position * pageOffset, 0, 0);
-		currentIndex = position;
-		animation.setFillAfter(true);
-		animation.setDuration(200);
-		cursorView.startAnimation(animation);
 	}
 }
