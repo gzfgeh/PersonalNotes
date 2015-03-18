@@ -187,11 +187,6 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 			animationEnd = (currentPage + percentage) * pageWidth;
 			animation = new TranslateAnimation(animationStart, animationEnd, 0, 0);
 		}
-		
-//		if (preIndex < currentPage){
-//		}else{
-//			animation = new TranslateAnimation(currentPage * pageWidth, -(currentPage + percentage) * pageWidth, 0, 0);
-//		}
 		animation.setFillAfter(true);
 		cursorView.startAnimation(animation);
 	}

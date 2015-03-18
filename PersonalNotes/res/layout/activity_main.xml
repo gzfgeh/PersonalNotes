@@ -38,7 +38,7 @@
 	
 	<fragment  
         android:id="@+id/left_menu"  
-        android:name="com.gzfgeh.personalnote.MovieFragment"  
+        android:name="com.gzfgeh.personalnote.LeftMenu"  
         android:layout_width="200dp"  
         android:layout_height="match_parent"  
         android:layout_gravity="left"  

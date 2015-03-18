@@ -11,5 +11,8 @@
 	<string name="photo">照片</string>
 	<string name="sounds">语音</string>
 	<string name="movie">视频</string>
+	<string name="gzfgeh">gzfgeh</string>
+	<string name="setting">设置</string>
+	<string name="other_login">第三方登陆</string>
 	
 </resources>

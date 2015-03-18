@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFFFFF">
+    
+	<RelativeLayout 
+	    android:layout_width="fill_parent"
+	    android:layout_height="100dp"
+	    android:background="@color/title_bg">
+	    
+	    <com.gzfgeh.animation.RoundImageView 
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:id="@+id/self_view"
+	        android:layout_alignParentLeft="true"
+	        android:layout_margin="20dp"
+	        android:layout_centerVertical="true"
+	        android:src="@drawable/drawer_layout_bg"/>
+
+	    <TextView
+	        android:id="@+id/user_name"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_centerVertical="true"
+	        android:layout_toRightOf="@+id/self_view"
+	        android:text="@string/gzfgeh" />
+	    
+	</RelativeLayout>
+	
+	<RelativeLayout 
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent">
+	    
+	    <RelativeLayout 
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:id="@+id/left_menu_other_login"
+	        android:layout_alignParentTop="true"
+	        android:layout_marginTop="80dp"
+	        android:layout_marginLeft="10dp"
+	        android:clickable="true">
+	        
+	        <ImageView 
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:src="@drawable/other_login"/>
+	        
+	        <TextView 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="@string/other_login"
+	            android:layout_centerInParent="true"/>
+	    </RelativeLayout>
+	    
+	    <RelativeLayout 
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:id="@+id/left_menu_setting"
+	        android:layout_below="@id/left_menu_other_login"
+	        android:layout_marginTop="20dp"
+	        android:layout_marginLeft="10dp"
+	        android:clickable="true">
+	        
+	        <ImageView 
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:src="@drawable/setting"/>
+	        
+	        <TextView 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="@string/setting"
+	            android:layout_centerInParent="true"/>
+	    </RelativeLayout>
+	    
+	        
+	</RelativeLayout>
+</LinearLayout>
