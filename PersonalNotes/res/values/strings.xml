@@ -17,5 +17,16 @@
 	<string name="cancle">取消</string>
 	<string name="get_photo">从相册选择图片</string>
 	<string name="make_photo">拍照</string>
+	<string name="personal_info">个人信息</string>
+	<string name="head_image">头像</string>
+	<string name="profession">职业</string>
+	<string name="signature">签名</string>
+	<string name="nickname">昵称</string>
+	<string name="sexual">性别</string>
+	<string name="region">地区</string>
+	<string name="email_addr">邮箱地址</string>
+	<string name="please_select">请选择</string>
+	<string name="signature_default">什么都没有留下哦</string>
+	<string name="sexual_default">保密</string>
 	
 </resources>

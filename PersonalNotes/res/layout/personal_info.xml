@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+	<fragment 
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:id="@+id/personal_info_title_id"
+	    android:name="com.gzfgeh.set.PersonalInfoTitle"/>
+	
+	<RelativeLayout 
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:background="@color/bottom_bg">
+	    
+	    <RelativeLayout 
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:id="@+id/head_select"
+	        android:background="#FFFFFF">
+	        
+	        <TextView 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="@string/head_image"
+	            android:layout_centerVertical="true"
+	            android:layout_alignParentLeft="true"
+	            android:layout_marginLeft="10dp"/>
+	        
+	        <ImageView 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:id="@+id/head_select_right"
+	            android:src="@drawable/open"
+	            android:layout_centerVertical="true"
+	            android:layout_alignParentRight="true"
+	            android:layout_marginRight="10dp"/>
+	        
+	        <com.gzfgeh.animation.RoundImageView 
+	            android:layout_width="30dp"
+	            android:layout_height="30dp"
+	            android:layout_margin="10dp"
+	            android:id="@+id/head_image_view"
+	            android:layout_toLeftOf="@id/head_select_right"
+	            android:src="@drawable/default_image"/>
+	    </RelativeLayout>
+	    
+	    <RelativeLayout 
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:id="@+id/profession_select"
+	        android:layout_marginTop="5dp"
+	        android:layout_below="@id/head_select"
+	        android:background="#FFFFFF">
+	        
+	        <TextView 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="@string/profession"
+	            android:layout_centerVertical="true"
+	            android:layout_alignParentLeft="true"
+	            android:layout_marginLeft="10dp"/>
+	        
+	        <ImageView 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:id="@+id/profession_select_right"
+	            android:src="@drawable/open"
+	            android:layout_centerVertical="true"
+	            android:layout_alignParentRight="true"
+	            android:layout_marginRight="10dp"/>
+	        
+	        <TextView 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_margin="10dp"
+	            android:id="@+id/please_select"
+	            android:text="@string/please_select"
+	            android:textColor="@color/text_default"
+	            android:layout_toLeftOf="@id/profession_select_right"/>
+	    </RelativeLayout>
+	    
+	    <RelativeLayout 
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:id="@+id/signature_select"
+	        android:layout_below="@id/profession_select"
+	        android:background="#FFFFFF">
+	        
+	        <TextView 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="@string/signature"
+	            android:layout_centerVertical="true"
+	            android:layout_alignParentLeft="true"
+	            android:layout_marginLeft="10dp"/>
+	        
+	        <ImageView 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:id="@+id/signature_select_right"
+	            android:src="@drawable/open"
+	            android:layout_centerVertical="true"
+	            android:layout_alignParentRight="true"
+	            android:layout_marginRight="10dp"/>
+	        
+	        <TextView 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_margin="10dp"
+	            android:id="@+id/signature_text"
+	            android:text="@string/signature_default"
+	            android:textColor="@color/text_default"
+	            android:layout_toLeftOf="@id/signature_select_right"/>
+	    </RelativeLayout>
+	    
+	    <RelativeLayout 
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:id="@+id/nickname_select"
+	        android:layout_marginTop="5dp"
+	        android:layout_below="@id/signature_select"
+	        android:background="#FFFFFF">
+	        
+	        <TextView 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="@string/nickname"
+	            android:layout_centerVertical="true"
+	            android:layout_alignParentLeft="true"
+	            android:layout_marginLeft="10dp"/>
+	        
+	        <ImageView 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:id="@+id/nickname_select_right"
+	            android:src="@drawable/open"
+	            android:layout_centerVertical="true"
+	            android:layout_alignParentRight="true"
+	            android:layout_marginRight="10dp"/>
+	        
+	        <TextView 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_margin="10dp"
+	            android:id="@+id/nickname_default"
+	            android:text="@string/gzfgeh"
+	            android:textColor="@color/text_default"
+	            android:layout_toLeftOf="@id/nickname_select_right"/>
+	    </RelativeLayout>
+	    
+	    
+	    <RelativeLayout 
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:id="@+id/sexual_select"
+	        android:layout_below="@id/nickname_select"
+	        android:background="#FFFFFF">
+	        
+	        <TextView 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="@string/sexual"
+	            android:layout_centerVertical="true"
+	            android:layout_alignParentLeft="true"
+	            android:layout_marginLeft="10dp"/>
+	        
+	        <ImageView 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:id="@+id/sexual_select_right"
+	            android:src="@drawable/open"
+	            android:layout_centerVertical="true"
+	            android:layout_alignParentRight="true"
+	            android:layout_marginRight="10dp"/>
+	        
+	        <TextView 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_margin="10dp"
+	            android:id="@+id/sexual_default"
+	            android:text="@string/sexual_default"
+	            android:textColor="@color/text_default"
+	            android:layout_toLeftOf="@id/sexual_select_right"/>
+	    </RelativeLayout>
+	    
+	    <RelativeLayout 
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:id="@+id/region_select"
+	        android:layout_below="@id/sexual_select"
+	        android:background="#FFFFFF">
+	        
+	        <TextView 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="@string/region"
+	            android:layout_centerVertical="true"
+	            android:layout_alignParentLeft="true"
+	            android:layout_marginLeft="10dp"/>
+	        
+	        <ImageView 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:id="@+id/region_select_right"
+	            android:src="@drawable/open"
+	            android:layout_centerVertical="true"
+	            android:layout_alignParentRight="true"
+	            android:layout_marginRight="10dp"/>
+	        
+	        <TextView 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_margin="10dp"
+	            android:id="@+id/region_default"
+	            android:text="@string/please_select"
+	            android:textColor="@color/text_default"
+	            android:layout_toLeftOf="@id/region_select_right"/>
+	    </RelativeLayout>
+	    
+	    
+	    <RelativeLayout 
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:id="@+id/email_addr_select"
+	        android:layout_marginTop="5dp"
+	        android:layout_below="@id/region_select"
+	        android:background="#FFFFFF">
+	        
+	        <TextView 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="@string/email_addr"
+	            android:layout_centerVertical="true"
+	            android:layout_alignParentLeft="true"
+	            android:layout_marginLeft="10dp"/>
+	        
+	        <ImageView 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:id="@+id/email_addr_select_right"
+	            android:src="@drawable/open"
+	            android:layout_centerVertical="true"
+	            android:layout_alignParentRight="true"
+	            android:layout_marginRight="10dp"/>
+	        
+	        <TextView 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_margin="10dp"
+	            android:id="@+id/email_addr_default"
+	            android:text="@string/please_select"
+	            android:textColor="@color/text_default"
+	            android:layout_toLeftOf="@id/email_addr_select_right"/>
+	    </RelativeLayout>
+	    
+	</RelativeLayout>
+</LinearLayout>

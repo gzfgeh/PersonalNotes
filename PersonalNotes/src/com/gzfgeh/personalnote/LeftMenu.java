@@ -1,6 +1,6 @@
 package com.gzfgeh.personalnote;
 
-import com.gzfgeh.animation.RoundImageView;
+import com.gzfgeh.set.PersonalInfo;
 import com.gzfgeh.set.Setting;
 import com.gzfgeh.set.TransparentActivity;
 
@@ -13,8 +13,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 
 public class LeftMenu extends Fragment implements OnClickListener {
-	private View setView;
-	private RoundImageView roundImageView;
+	private View setView, personalSet;
 	public static final int REQUEST_CODE = 1;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -23,8 +22,8 @@ public class LeftMenu extends Fragment implements OnClickListener {
 		View view = inflater.inflate(R.layout.left_menu, container, false);
 		setView = view.findViewById(R.id.left_menu_setting);
 		setView.setOnClickListener(this);
-		roundImageView = (RoundImageView) view.findViewById(R.id.self_view);
-		roundImageView.setOnClickListener(this);
+		personalSet = view.findViewById(R.id.personal_set);
+		personalSet.setOnClickListener(this);
 		return view;
 	}
 	@Override
@@ -37,8 +36,8 @@ public class LeftMenu extends Fragment implements OnClickListener {
 			getActivity().startActivity(intent);
 			break;
 		
-		case R.id.self_view:
-			intent = new Intent(getActivity(), TransparentActivity.class);
+		case R.id.personal_set:
+			intent = new Intent(getActivity(), PersonalInfo.class);
 			startActivityForResult(intent, REQUEST_CODE);
 		default:
 			break;

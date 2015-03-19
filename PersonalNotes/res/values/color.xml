@@ -4,4 +4,5 @@
     <color name="title_btn_text_color">#FFF</color>
     <color name="bottom_bg">#E0E0E0</color>
     <color name="text_color">#3300FF</color>
+    <color name="text_default">#A8A8A8</color>
 </resources>

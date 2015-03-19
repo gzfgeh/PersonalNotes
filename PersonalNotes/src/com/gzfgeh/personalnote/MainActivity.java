@@ -100,7 +100,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 		soundsView = (TextView) findViewById(R.id.sounds_msg);
 		photoView = (TextView) findViewById(R.id.photo_msg);
 		movieView = (TextView) findViewById(R.id.movie_msg);
-		titleText = (TextView) findViewById(R.id.title_text);
+		titleText = (TextView) findViewById(R.id.title_center_text);
 		cursorView = (ImageView) findViewById(R.id.cursor);
 		viewPager = (ViewPager) findViewById(R.id.container);
 		drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);

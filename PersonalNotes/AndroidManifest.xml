@@ -24,6 +24,7 @@
         </activity>
         
         <activity android:name="com.gzfgeh.set.Setting"></activity>
+        <activity android:name="com.gzfgeh.set.PersonalInfo"></activity>
         <activity 
             android:name="com.gzfgeh.set.TransparentActivity"
             android:theme="@android:style/Theme.Translucent">
