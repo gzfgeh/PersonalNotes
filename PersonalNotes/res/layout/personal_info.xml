@@ -3,12 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-    
+   <!--  
 	<fragment 
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
 	    android:id="@+id/personal_info_title_id"
 	    android:name="com.gzfgeh.set.PersonalInfoTitle"/>
+	--> 
+
+	<include layout="@layout/main_title"/>
+
 	
 	<RelativeLayout 
 	    android:layout_width="fill_parent"
@@ -19,6 +23,7 @@
 	        android:layout_width="fill_parent"
 	        android:layout_height="wrap_content"
 	        android:id="@+id/head_select"
+	        android:padding="5dp"
 	        android:background="#FFFFFF">
 	        
 	        <TextView 
@@ -51,6 +56,7 @@
 	        android:layout_width="fill_parent"
 	        android:layout_height="wrap_content"
 	        android:id="@+id/profession_select"
+	        android:padding="5dp"
 	        android:layout_marginTop="5dp"
 	        android:layout_below="@id/head_select"
 	        android:background="#FFFFFF">
@@ -86,6 +92,7 @@
 	        android:layout_width="fill_parent"
 	        android:layout_height="wrap_content"
 	        android:id="@+id/signature_select"
+	        android:padding="5dp"
 	        android:layout_below="@id/profession_select"
 	        android:background="#FFFFFF">
 	        
@@ -120,6 +127,7 @@
 	        android:layout_width="fill_parent"
 	        android:layout_height="wrap_content"
 	        android:id="@+id/nickname_select"
+	        android:padding="5dp"
 	        android:layout_marginTop="5dp"
 	        android:layout_below="@id/signature_select"
 	        android:background="#FFFFFF">
@@ -156,6 +164,7 @@
 	        android:layout_width="fill_parent"
 	        android:layout_height="wrap_content"
 	        android:id="@+id/sexual_select"
+	        android:padding="5dp"
 	        android:layout_below="@id/nickname_select"
 	        android:background="#FFFFFF">
 	        
@@ -190,6 +199,7 @@
 	        android:layout_width="fill_parent"
 	        android:layout_height="wrap_content"
 	        android:id="@+id/region_select"
+	        android:padding="5dp"
 	        android:layout_below="@id/sexual_select"
 	        android:background="#FFFFFF">
 	        
@@ -225,6 +235,7 @@
 	        android:layout_width="fill_parent"
 	        android:layout_height="wrap_content"
 	        android:id="@+id/email_addr_select"
+	        android:padding="5dp"
 	        android:layout_marginTop="5dp"
 	        android:layout_below="@id/region_select"
 	        android:background="#FFFFFF">

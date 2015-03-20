@@ -2,7 +2,6 @@ package com.gzfgeh.personalnote;
 
 import com.gzfgeh.set.PersonalInfo;
 import com.gzfgeh.set.Setting;
-import com.gzfgeh.set.TransparentActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -38,7 +37,7 @@ public class LeftMenu extends Fragment implements OnClickListener {
 		
 		case R.id.personal_set:
 			intent = new Intent(getActivity(), PersonalInfo.class);
-			getActivity().startActivityForResult(intent, REQUEST_CODE);
+			startActivityForResult(intent, REQUEST_CODE);
 		default:
 			break;
 		}
