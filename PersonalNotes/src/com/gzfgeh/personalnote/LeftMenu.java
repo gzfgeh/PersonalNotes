@@ -29,7 +29,7 @@ public class LeftMenu extends Fragment implements OnClickListener {
 	@Override
 	public void onClick(View view) {
 		// TODO Auto-generated method stub
-		Intent intent;
+		Intent intent = null;
 		switch (view.getId()) {
 		case R.id.left_menu_setting:
 			intent = new Intent(getActivity(), Setting.class);
@@ -38,7 +38,7 @@ public class LeftMenu extends Fragment implements OnClickListener {
 		
 		case R.id.personal_set:
 			intent = new Intent(getActivity(), PersonalInfo.class);
-			startActivityForResult(intent, REQUEST_CODE);
+			getActivity().startActivityForResult(intent, REQUEST_CODE);
 		default:
 			break;
 		}
