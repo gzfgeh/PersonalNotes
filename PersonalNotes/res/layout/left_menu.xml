@@ -19,7 +19,7 @@
 	        android:layout_alignParentLeft="true"
 	        android:layout_margin="20dp"
 	        android:layout_centerVertical="true"
-	        android:src="@drawable/drawer_layout_bg"/>
+	        android:src="@drawable/default_image"/>
 
 	    <TextView
 	        android:id="@+id/user_name"

@@ -3,13 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-   <!--  
-	<fragment 
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:id="@+id/personal_info_title_id"
-	    android:name="com.gzfgeh.set.PersonalInfoTitle"/>
-	--> 
 
 	<include layout="@layout/main_title"/>
 
@@ -23,6 +16,7 @@
 	        android:layout_width="fill_parent"
 	        android:layout_height="wrap_content"
 	        android:id="@+id/head_select"
+	        android:clickable="true"
 	        android:padding="5dp"
 	        android:background="#FFFFFF">
 	        
