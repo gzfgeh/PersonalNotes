@@ -42,8 +42,7 @@
 	            android:layout_height="30dp"
 	            android:layout_margin="10dp"
 	            android:id="@+id/head_image_view"
-	            android:layout_toLeftOf="@id/head_select_right"
-	            android:src="@drawable/default_image"/>
+	            android:layout_toLeftOf="@id/head_select_right"/>
 	    </RelativeLayout>
 	    
 	    <RelativeLayout 
