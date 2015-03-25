@@ -20,6 +20,7 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class PersonalInfo extends Activity implements OnClickListener {
 	public static final String FILE_PATH = Environment.getExternalStorageDirectory() + 
@@ -69,16 +70,20 @@ public class PersonalInfo extends Activity implements OnClickListener {
 			headImageView.setImageResource(R.drawable.default_image);
 		else 
 			headImageView.setImageBitmap(ImageTool.setSDImageView(FILE_PATH + FILE_NAME));
+		
+		Toast.makeText(this, "create successful", Toast.LENGTH_SHORT).show();
 	}
 	@Override
 	public void onClick(View view) {
 		// TODO Auto-generated method stub
 		switch (view.getId()) {
 		case R.id.head_select:
-			dialogShow();
+			if (!isFinishing())
+				dialogShow(view);
 			break;
 			
 		case R.id.title_left:
+			setResult(RESULT_OK);
 			finish();
 			break;
 			
@@ -88,9 +93,9 @@ public class PersonalInfo extends Activity implements OnClickListener {
 			break;
 		}
 	}
-	private void dialogShow() {
+	private void dialogShow(View view) {
 		// TODO Auto-generated method stub
-		dialogBuilder=NiftyDialogBuilder.getInstance(this);
+		dialogBuilder=NiftyDialogBuilder.getInstance(PersonalInfo.this);
         effect=Effectstype.Slidetop;
 
         dialogBuilder
@@ -101,7 +106,7 @@ public class PersonalInfo extends Activity implements OnClickListener {
                 .isCancelableOnTouchOutside(true)                           //def    | isCancelable(true)
                 .withDuration(300)                                          //def
                 .withEffect(effect)                                 //def gone
-                .setCustomView(R.layout.custom_dialog,this)         //.setCustomView(View or ResId,context)
+                .setCustomView(R.layout.custom_dialog,view.getContext())         //.setCustomView(View or ResId,context)
                 .show();
 	}
 	
