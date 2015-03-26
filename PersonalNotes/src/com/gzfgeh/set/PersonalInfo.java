@@ -28,8 +28,8 @@ public class PersonalInfo extends Activity implements OnClickListener {
 	
 	private View titleRightView, titleCenterView, titleLeftView;
 	private TextView titleLeftTextView;
-	private ImageView headImageView;
-	private View headSelect;
+	private ImageView headImageView, exchangeDesignImageView, productorManagerImageView;
+	private View headSelect, professionSelect;
 	
 	private Effectstype effect;
 	private NiftyDialogBuilder dialogBuilder;
@@ -58,6 +58,12 @@ public class PersonalInfo extends Activity implements OnClickListener {
 		headSelect.setOnClickListener(this);
 		headImageView = (ImageView) findViewById(R.id.head_image_view);
 		
+		professionSelect = findViewById(R.id.profession_select);
+		professionSelect.setOnClickListener(this);
+		
+		exchangeDesignImageView = (ImageView) findViewById(R.id.exchange_design_image);
+		productorManagerImageView = (ImageView) findViewById(R.id.productor_manager_image);
+		
 		myApplication = (MyApplication)getApplication();
 		outputFile = myApplication.getOutputFile();
 		
@@ -73,7 +79,11 @@ public class PersonalInfo extends Activity implements OnClickListener {
 		switch (view.getId()) {
 		case R.id.head_select:
 			if (!isFinishing())
-				dialogShow(view);
+				headDialogShow(view);
+			break;
+			
+		case R.id.profession_select:
+			professionDialogShow(view);
 			break;
 			
 		case R.id.title_left:
@@ -87,10 +97,44 @@ public class PersonalInfo extends Activity implements OnClickListener {
 			break;
 		}
 	}
-	private void dialogShow(View view) {
+	private void professionDialogShow(View view) {
 		// TODO Auto-generated method stub
 		dialogBuilder=NiftyDialogBuilder.getInstance(PersonalInfo.this);
         effect=Effectstype.Slidetop;
+
+        dialogBuilder
+        		.withMessage(null)
+                .withTitle(getString(R.string.please_select))
+                .withTitleColor("#33CCFF")                                  
+                .withDividerColor("#33CCFF")
+                .isCancelableOnTouchOutside(false)                          
+                .withDuration(300)                                  
+                .withEffect(effect)                                 
+                .setCustomView(R.layout.profession,view.getContext())
+                .withButton1Text(getString(R.string.ok))
+                .setButton1Click(new OnClickListener() {
+					
+					@Override
+					public void onClick(View view) {
+						// TODO Auto-generated method stub
+						dialogBuilder.dismiss();
+					}
+				})
+				.withButton2Text(getString(R.string.cancle))
+				.setButton2Click(new OnClickListener() {
+					
+					@Override
+					public void onClick(View view) {
+						// TODO Auto-generated method stub
+						dialogBuilder.dismiss();
+					}
+				})
+                .show();
+	}
+	private void headDialogShow(View view) {
+		// TODO Auto-generated method stub
+		dialogBuilder=NiftyDialogBuilder.getInstance(PersonalInfo.this);
+        effect=Effectstype.Fadein;
 
         dialogBuilder
         		.withMessage(null)
@@ -131,6 +175,29 @@ public class PersonalInfo extends Activity implements OnClickListener {
 			break;
 		}
 		dialogBuilder.dismiss();
+	}
+	
+	public void professionClick(View view){
+		
+		switch (view.getId()) {
+		case R.id.exchange_design:
+			clearAllImageView();
+			exchangeDesignImageView.setVisibility(View.VISIBLE);
+			break;
+			
+		case R.id.productor_manager:
+			productorManagerImageView.setVisibility(View.VISIBLE);
+			break;
+			
+		default:
+			break;
+		}
+	}
+	
+	private void clearAllImageView() {
+		// TODO Auto-generated method stub
+		exchangeDesignImageView.setVisibility(View.GONE);
+		productorManagerImageView.setVisibility(View.GONE);
 	}
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {

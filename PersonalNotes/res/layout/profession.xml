@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bottom_bg">
+    
+    <RelativeLayout 
+        android:id="@+id/exchange_design"
+        android:clickable="true"
+        android:onClick="professionClick"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:padding="5dp">
+        
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/exchange_design"/>
+        <ImageView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/exchange_design_image"
+            android:layout_alignParentRight="true"
+            android:visibility="gone"
+            android:src="@drawable/movie"/>
+    </RelativeLayout>
+
+    <RelativeLayout 
+        android:id="@+id/productor_manager"
+        android:clickable="true"
+        android:onClick="professionClick"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:padding="5dp"
+        android:layout_margin="2dp">
+        
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/productor_manager"/>
+        <ImageView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/productor_manager_image"
+            android:layout_alignParentRight="true"
+            android:visibility="gone"
+            android:src="@drawable/movie"/>
+    </RelativeLayout>
+    
+    <RelativeLayout 
+        android:id="@+id/ui_design"
+        android:clickable="true"
+        android:onClick="professionClick"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:padding="5dp"
+        android:layout_margin="2dp">
+        
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ui_design"/>
+        <ImageView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:visibility="gone"
+            android:src="@drawable/movie"/>
+    </RelativeLayout>
+    
+    <RelativeLayout 
+        android:id="@+id/js_design"
+        android:clickable="true"
+        android:onClick="professionClick"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:padding="5dp"
+        android:layout_margin="2dp">
+        
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/js_design"/>
+        <ImageView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:visibility="gone"
+            android:src="@drawable/movie"/>
+    </RelativeLayout>
+    
+    <RelativeLayout 
+        android:id="@+id/web_design"
+        android:clickable="true"
+        android:onClick="professionClick"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:padding="5dp"
+        android:layout_margin="2dp">
+        
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/web_design"/>
+        <ImageView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:visibility="gone"
+            android:src="@drawable/movie"/>
+    </RelativeLayout>
+    
+    <RelativeLayout 
+        android:id="@+id/mobile_design"
+        android:clickable="true"
+        android:onClick="professionClick"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:padding="5dp"
+        android:layout_margin="2dp">
+        
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mobile_design"/>
+        <ImageView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:visibility="gone"
+            android:src="@drawable/movie"/>
+    </RelativeLayout>
+    
+    <RelativeLayout 
+        android:id="@+id/java_design"
+        android:clickable="true"
+        android:onClick="professionClick"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:padding="5dp"
+        android:layout_margin="2dp">
+        
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/java_design"/>
+        <ImageView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:visibility="gone"
+            android:src="@drawable/movie"/>
+    </RelativeLayout>
+    
+    <RelativeLayout 
+        android:id="@+id/php_design"
+        android:clickable="true"
+        android:onClick="professionClick"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:padding="5dp"
+        android:layout_margin="2dp">
+        
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/php_design"/>
+        <ImageView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:visibility="gone"
+            android:src="@drawable/movie"/>
+    </RelativeLayout>
+    
+    <RelativeLayout 
+        android:id="@+id/linux_design"
+        android:clickable="true"
+        android:onClick="professionClick"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:padding="5dp"
+        android:layout_margin="2dp">
+        
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/linux_design"/>
+        <ImageView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:visibility="gone"
+            android:src="@drawable/movie"/>
+    </RelativeLayout>
+    
+    <RelativeLayout 
+        android:id="@+id/software_test"
+        android:clickable="true"
+        android:onClick="professionClick"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:padding="5dp"
+        android:layout_margin="2dp">
+        
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/software_test"/>
+        <ImageView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:visibility="gone"
+            android:src="@drawable/movie"/>
+    </RelativeLayout>
+    
+    <RelativeLayout 
+        android:id="@+id/others"
+        android:clickable="true"
+        android:onClick="professionClick"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:padding="5dp"
+        android:layout_margin="2dp">
+        
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/others"/>
+        <ImageView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/movie"/>
+    </RelativeLayout>
+    
+</LinearLayout>

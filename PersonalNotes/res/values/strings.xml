@@ -42,5 +42,6 @@
 	<string name="java_design">JAVA工程师</string>
 	<string name="student">学生</string>
 	<string name="others">其他</string>
+	<string name="ok">确定</string>
 	
 </resources>
