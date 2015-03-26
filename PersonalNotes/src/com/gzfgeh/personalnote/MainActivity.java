@@ -1,10 +1,13 @@
 package com.gzfgeh.personalnote;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.gzfgeh.animation.MenuDrawLayout;
 import com.gzfgeh.animation.RoundImageView;
+import com.gzfgeh.imagetool.ImageTool;
+import com.gzfgeh.myapplication.MyApplication;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -20,6 +23,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -33,7 +37,8 @@ import android.widget.TextView;
 public class MainActivity extends ActionBarActivity implements OnClickListener, OnPageChangeListener {
 	private View textLayout, soundsLayout, photoLayout, movieLayout;
 	private TextView textView, soundsView, photoView, movieView;
-	private TextView titleText;
+	private TextView titleText, titleLeftText;
+	private RoundImageView titleLeftImageView;
 	private TextFragment textFragment;
 	private SoundsFragment soundsFragment;
 	private PhotoFragment photoFragment;
@@ -49,6 +54,10 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 	private float animationStart, animationEnd;
 	private DrawerLayout drawerLayout;
 	private RoundImageView imageView;
+	
+	private MyApplication myApplication;
+	private File outputFile;
+	
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,11 +105,24 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 		soundsLayout.setOnClickListener(this);
 		photoLayout.setOnClickListener(this);
 		movieLayout.setOnClickListener(this);
+		
 		textView = (TextView) findViewById(R.id.text_msg);
 		soundsView = (TextView) findViewById(R.id.sounds_msg);
 		photoView = (TextView) findViewById(R.id.photo_msg);
 		movieView = (TextView) findViewById(R.id.movie_msg);
+		
 		titleText = (TextView) findViewById(R.id.title_center_text);
+		titleLeftText = (TextView) findViewById(R.id.title_left_text);
+		titleLeftText.setVisibility(View.GONE);
+		titleLeftImageView = (RoundImageView) findViewById(R.id.title_left_image);
+		titleLeftImageView.setOnClickListener(this);
+		myApplication = (MyApplication)getApplication();
+		outputFile = myApplication.getOutputFile();
+		if (outputFile.length() == 0 || !outputFile.exists())
+			titleLeftImageView.setImageResource(R.drawable.default_image);
+		else 
+			titleLeftImageView.setImageBitmap(ImageTool.setSDImageView(outputFile.getAbsolutePath()));
+		
 		cursorView = (ImageView) findViewById(R.id.cursor);
 		viewPager = (ViewPager) findViewById(R.id.container);
 		drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -169,6 +191,11 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 			viewPager.setCurrentItem(3);
 			break;
 			
+		case R.id.title_left_image:
+			drawerLayout.openDrawer(Gravity.LEFT);
+			drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED, Gravity.LEFT);
+			break;
+			
 		default:
 			break;
 		}
@@ -184,7 +211,6 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 
 	@Override
 	public void onPageScrolled(int currentPage, float percentage, int percentagePix) {
-		// TODO Auto-generated method stub
 		Animation animation = null;
 		if (percentage == 0){
 			animationStart = currentPage * pageWidth;
@@ -203,8 +229,6 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 
 	@Override
 	public void onPageSelected(int position) {
-		// TODO Auto-generated method stub
-		//cursorViewAnimation(position);
 		resetSelected();
 		
 		switch (position) {

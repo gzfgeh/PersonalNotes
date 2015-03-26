@@ -4,6 +4,7 @@ import java.io.File;
 
 import com.gzfgeh.animation.RoundImageView;
 import com.gzfgeh.imagetool.ImageTool;
+import com.gzfgeh.myapplication.MyApplication;
 import com.gzfgeh.set.PersonalInfo;
 import com.gzfgeh.set.Setting;
 
@@ -16,9 +17,13 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 
 public class LeftMenu extends Fragment implements OnClickListener {
+	public static final int REQUEST_CODE = 1;
+	private MyApplication myApplication;
+	private File outputFile;
+	
 	private View setView, personalSet;
 	private RoundImageView selfView;
-	public static final int REQUEST_CODE = 1;
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -29,11 +34,13 @@ public class LeftMenu extends Fragment implements OnClickListener {
 		personalSet = view.findViewById(R.id.personal_set);
 		personalSet.setOnClickListener(this);
 		selfView = (RoundImageView) view.findViewById(R.id.self_view);
-		File outputFile = new File(PersonalInfo.FILE_PATH + PersonalInfo.FILE_NAME);
+		
+		myApplication = (MyApplication)getActivity().getApplication();
+		outputFile = myApplication.getOutputFile();
 		if (outputFile.length() == 0 || !outputFile.exists())
 			selfView.setImageResource(R.drawable.default_image);
 		else 
-			selfView.setImageBitmap(ImageTool.setSDImageView(PersonalInfo.FILE_PATH + PersonalInfo.FILE_NAME));
+			selfView.setImageBitmap(ImageTool.setSDImageView(outputFile.getAbsolutePath()));
 		return view;
 	}
 	@Override

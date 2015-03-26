@@ -3,6 +3,7 @@ package com.gzfgeh.set;
 import java.io.File;
 import java.io.IOException;
 
+import com.gzfgeh.myapplication.MyApplication;
 import com.gzfgeh.personalnote.R;
 import com.gzfgeh.dialog.Effectstype;
 import com.gzfgeh.dialog.NiftyDialogBuilder;
@@ -13,19 +14,14 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class PersonalInfo extends Activity implements OnClickListener {
-	public static final String FILE_PATH = Environment.getExternalStorageDirectory() + 
-			File.separator + "PersonalNote" + File.separator;
-	public static final String FILE_NAME = "image.jpg";
 	private static final int FROM_CAPTURE = 1;
 	private static final int FROM_GALLERY = 2;
 	private static final int CROP_PHOTO = 3;
@@ -38,6 +34,7 @@ public class PersonalInfo extends Activity implements OnClickListener {
 	private Effectstype effect;
 	private NiftyDialogBuilder dialogBuilder;
 	
+	private MyApplication myApplication;
 	private Intent getImageIntent;
 	private File outputFile;
 	private Uri imageUri;
@@ -48,10 +45,6 @@ public class PersonalInfo extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.personal_info);
-		
-		File fold = new File(FILE_PATH);
-		if (!fold.exists())
-			fold.mkdirs();
 		
 		titleRightView = findViewById(R.id.title_right);
 		titleRightView.setVisibility(View.INVISIBLE);
@@ -65,13 +58,14 @@ public class PersonalInfo extends Activity implements OnClickListener {
 		headSelect.setOnClickListener(this);
 		headImageView = (ImageView) findViewById(R.id.head_image_view);
 		
-		outputFile = new File(FILE_PATH + FILE_NAME);
+		myApplication = (MyApplication)getApplication();
+		outputFile = myApplication.getOutputFile();
+		
 		if (outputFile.length() == 0 || !outputFile.exists())
 			headImageView.setImageResource(R.drawable.default_image);
 		else 
-			headImageView.setImageBitmap(ImageTool.setSDImageView(FILE_PATH + FILE_NAME));
+			headImageView.setImageBitmap(ImageTool.setSDImageView(outputFile.getAbsolutePath()));
 		
-		Toast.makeText(this, "create successful", Toast.LENGTH_SHORT).show();
 	}
 	@Override
 	public void onClick(View view) {
@@ -157,7 +151,7 @@ public class PersonalInfo extends Activity implements OnClickListener {
 			case CROP_PHOTO:
 				if (data != null) {
 					Bitmap bitmap = data.getParcelableExtra("data");
-					ImageTool.saveBitmapToSDCard(bitmap);
+					ImageTool.saveBitmapToSDCard(outputFile,bitmap);
 					headImageView.setImageBitmap(bitmap);
 				}
 				break;
