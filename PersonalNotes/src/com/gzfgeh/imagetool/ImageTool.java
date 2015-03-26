@@ -16,7 +16,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.MediaStore;
 
-public class ImageTool {
+public final class ImageTool {
 	
 	private ImageTool(){
 		throw new AssertionError();

@@ -6,7 +6,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.DrawerLayout.DrawerListener;
 import android.view.View;
 
-public class MenuDrawLayout {
+public final class MenuDrawLayout {
 	public static void drawerLayoutEvent(final DrawerLayout drawerLayout){
 		if (drawerLayout != null){
 			drawerLayout.setDrawerListener(new DrawerListener() {

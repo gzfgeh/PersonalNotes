@@ -1278,17 +1278,26 @@ containing a value of this type.
         public static final int change_image=0x7f0a0028;
         public static final int edit=0x7f0a0012;
         public static final int email_addr=0x7f0a0024;
+        public static final int exchange_design=0x7f0a002a;
         public static final int get_photo=0x7f0a001b;
         public static final int gzfgeh=0x7f0a0017;
         public static final int head_image=0x7f0a001e;
         public static final int hello_world=0x7f0a000e;
+        public static final int java_design=0x7f0a0033;
+        public static final int js_design=0x7f0a002d;
+        public static final int linux_design=0x7f0a0032;
         public static final int make_photo=0x7f0a001c;
+        public static final int mobile_design=0x7f0a002f;
         public static final int movie=0x7f0a0016;
         public static final int nickname=0x7f0a0021;
         public static final int other_login=0x7f0a0019;
+        public static final int others=0x7f0a0035;
+        public static final int page_design=0x7f0a0029;
         public static final int personal_info=0x7f0a001d;
         public static final int photo=0x7f0a0014;
+        public static final int php_design=0x7f0a0030;
         public static final int please_select=0x7f0a0025;
+        public static final int productor_manager=0x7f0a002b;
         public static final int profession=0x7f0a001f;
         public static final int region=0x7f0a0023;
         public static final int setting=0x7f0a0018;
@@ -1296,9 +1305,13 @@ containing a value of this type.
         public static final int sexual_default=0x7f0a0027;
         public static final int signature=0x7f0a0020;
         public static final int signature_default=0x7f0a0026;
+        public static final int software_test=0x7f0a0031;
         public static final int sounds=0x7f0a0015;
+        public static final int student=0x7f0a0034;
         public static final int text=0x7f0a0013;
         public static final int title=0x7f0a0011;
+        public static final int ui_design=0x7f0a002c;
+        public static final int web_design=0x7f0a002e;
     }
     public static final class style {
         /** 

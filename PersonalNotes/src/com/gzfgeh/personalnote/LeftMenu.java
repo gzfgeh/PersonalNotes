@@ -1,5 +1,9 @@
 package com.gzfgeh.personalnote;
 
+import java.io.File;
+
+import com.gzfgeh.animation.RoundImageView;
+import com.gzfgeh.imagetool.ImageTool;
 import com.gzfgeh.set.PersonalInfo;
 import com.gzfgeh.set.Setting;
 
@@ -13,6 +17,7 @@ import android.view.ViewGroup;
 
 public class LeftMenu extends Fragment implements OnClickListener {
 	private View setView, personalSet;
+	private RoundImageView selfView;
 	public static final int REQUEST_CODE = 1;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -23,6 +28,12 @@ public class LeftMenu extends Fragment implements OnClickListener {
 		setView.setOnClickListener(this);
 		personalSet = view.findViewById(R.id.personal_set);
 		personalSet.setOnClickListener(this);
+		selfView = (RoundImageView) view.findViewById(R.id.self_view);
+		File outputFile = new File(PersonalInfo.FILE_PATH + PersonalInfo.FILE_NAME);
+		if (outputFile.length() == 0 || !outputFile.exists())
+			selfView.setImageResource(R.drawable.default_image);
+		else 
+			selfView.setImageBitmap(ImageTool.setSDImageView(PersonalInfo.FILE_PATH + PersonalInfo.FILE_NAME));
 		return view;
 	}
 	@Override

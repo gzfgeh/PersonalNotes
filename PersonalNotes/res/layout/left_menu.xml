@@ -18,8 +18,7 @@
 	        android:id="@+id/self_view"
 	        android:layout_alignParentLeft="true"
 	        android:layout_margin="20dp"
-	        android:layout_centerVertical="true"
-	        android:src="@drawable/default_image"/>
+	        android:layout_centerVertical="true"/>
 
 	    <TextView
 	        android:id="@+id/user_name"

@@ -29,5 +29,18 @@
 	<string name="signature_default">什么都没有留下哦</string>
 	<string name="sexual_default">保密</string>
 	<string name="change_image">修改头像</string>
+	<string name="page_design">页面重构设计</string>
+	<string name="exchange_design">交互设计师</string>
+	<string name="productor_manager">产品经理</string>
+	<string name="ui_design">UI设计师</string>
+	<string name="js_design">JS设计师</string>
+	<string name="web_design">WEB设计师</string>
+	<string name="mobile_design">移动设计师</string>
+	<string name="php_design">PHP开发设计师</string>
+	<string name="software_test">软件测试工程师</string>
+	<string name="linux_design">Linux系统工程师</string>
+	<string name="java_design">JAVA工程师</string>
+	<string name="student">学生</string>
+	<string name="others">其他</string>
 	
 </resources>
