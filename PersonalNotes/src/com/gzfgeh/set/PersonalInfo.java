@@ -17,6 +17,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewParent;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -60,9 +61,6 @@ public class PersonalInfo extends Activity implements OnClickListener {
 		
 		professionSelect = findViewById(R.id.profession_select);
 		professionSelect.setOnClickListener(this);
-		
-		exchangeDesignImageView = (ImageView) findViewById(R.id.exchange_design_image);
-		productorManagerImageView = (ImageView) findViewById(R.id.productor_manager_image);
 		
 		myApplication = (MyApplication)getApplication();
 		outputFile = myApplication.getOutputFile();
@@ -178,14 +176,15 @@ public class PersonalInfo extends Activity implements OnClickListener {
 	}
 	
 	public void professionClick(View view){
-		
+		//clearAllImageView(view.getParent());
 		switch (view.getId()) {
 		case R.id.exchange_design:
-			clearAllImageView();
+			exchangeDesignImageView = (ImageView) view.findViewById(R.id.exchange_design_image);
 			exchangeDesignImageView.setVisibility(View.VISIBLE);
 			break;
 			
 		case R.id.productor_manager:
+			productorManagerImageView = (ImageView) view.findViewById(R.id.productor_manager_image);
 			productorManagerImageView.setVisibility(View.VISIBLE);
 			break;
 			
@@ -194,8 +193,10 @@ public class PersonalInfo extends Activity implements OnClickListener {
 		}
 	}
 	
-	private void clearAllImageView() {
+	private void clearAllImageView(ViewParent view) {
 		// TODO Auto-generated method stub
+//		exchangeDesignImageView = (ImageView) view.findViewById(R.id.exchange_design_image);
+//		productorManagerImageView = (ImageView) view.findViewById(R.id.productor_manager_image);
 		exchangeDesignImageView.setVisibility(View.GONE);
 		productorManagerImageView.setVisibility(View.GONE);
 	}

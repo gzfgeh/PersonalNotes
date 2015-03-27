@@ -14,7 +14,7 @@
 	<string name="gzfgeh">gzfgeh</string>
 	<string name="setting">设置</string>
 	<string name="other_login">第三方登陆</string>
-	<string name="cancle">取消</string>
+	<string name="cancle">Cancel</string>
 	<string name="get_photo">从相册选择图片</string>
 	<string name="make_photo">拍照</string>
 	<string name="personal_info">个人信息</string>
@@ -42,6 +42,6 @@
 	<string name="java_design">JAVA工程师</string>
 	<string name="student">学生</string>
 	<string name="others">其他</string>
-	<string name="ok">确定</string>
+	<string name="ok">OK</string>
 	
 </resources>
