@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" >
+    
+	<!-- default background color 
+    <item android:drawable="@color/bottom_bg"/>
+    -->
+    
+    <!-- no focus background color -->
+    <item android:state_window_focused="false" android:drawable="@drawable/open"/>
+    
+    <!-- no touch mode but have focus and one click background color-->
+	<item android:state_focused="true" android:state_pressed="true" android:drawable="@drawable/item_selected"/>  
+	
+	
+	<!-- touch mode have focus and one click background color 
+    <item android:state_focused="false" android:state_pressed="true" android:drawable="@color/title_bg" />  
+    -->
+    
+    <!-- select background color 
+    <item android:state_selected="true" android:drawable="@color/title_bg"/>
+    -->
+    
+    <!-- have focus background color 
+    <item android:state_focused="true" android:drawable="@drawable/item_selected"/>
+    -->
+    
+</selector>

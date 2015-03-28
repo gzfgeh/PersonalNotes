@@ -15,6 +15,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.StaticLayout;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewParent;
@@ -29,7 +30,7 @@ public class PersonalInfo extends Activity implements OnClickListener {
 	
 	private View titleRightView, titleCenterView, titleLeftView;
 	private TextView titleLeftTextView;
-	private ImageView headImageView, exchangeDesignImageView, productorManagerImageView;
+	private ImageView headImageView, professionImageView;
 	private View headSelect, professionSelect;
 	
 	private Effectstype effect;
@@ -61,6 +62,8 @@ public class PersonalInfo extends Activity implements OnClickListener {
 		
 		professionSelect = findViewById(R.id.profession_select);
 		professionSelect.setOnClickListener(this);
+		
+		//View view2  = findViewById(R.id.test);
 		
 		myApplication = (MyApplication)getApplication();
 		outputFile = myApplication.getOutputFile();
@@ -173,30 +176,61 @@ public class PersonalInfo extends Activity implements OnClickListener {
 	}
 	
 	public void professionClick(View view){
-		//clearAllImageView(view.getParent());
+		
+		if (professionImageView != null)
+			professionImageView.setVisibility(View.GONE);
+		
 		switch (view.getId()) {
 		case R.id.exchange_design:
-			exchangeDesignImageView = (ImageView) view.findViewById(R.id.exchange_design_image);
-			exchangeDesignImageView.setVisibility(View.VISIBLE);
+			professionImageView = (ImageView) view.findViewById(R.id.exchange_design_image);
 			break;
 			
 		case R.id.productor_manager:
-			productorManagerImageView = (ImageView) view.findViewById(R.id.productor_manager_image);
-			productorManagerImageView.setVisibility(View.VISIBLE);
+			professionImageView = (ImageView) view.findViewById(R.id.productor_manager_image);
+			break;
+		
+		case R.id.ui_design:
+			professionImageView = (ImageView) view.findViewById(R.id.ui_design_image);
+			break;
+			
+		case R.id.js_design:
+			professionImageView = (ImageView) view.findViewById(R.id.js_design_image);
+			break;
+			
+		case R.id.web_design:
+			professionImageView = (ImageView) view.findViewById(R.id.web_design_image);
+			break;
+			
+		case R.id.java_design:
+			professionImageView = (ImageView) view.findViewById(R.id.java_design_image);
+			break;
+			
+		case R.id.others:
+			professionImageView = (ImageView) view.findViewById(R.id.others_image);
+			break;
+			
+		case R.id.mobile_design:
+			professionImageView = (ImageView) view.findViewById(R.id.mobile_design_image);
+			break;
+			
+		case R.id.php_design:
+			professionImageView = (ImageView) view.findViewById(R.id.php_design_image);
+			break;
+			
+		case R.id.linux_design:
+			professionImageView = (ImageView) view.findViewById(R.id.linux_design_image);
+			break;
+			
+		case R.id.software_test:
+			professionImageView = (ImageView) view.findViewById(R.id.software_test_image);
 			break;
 			
 		default:
 			break;
 		}
+		professionImageView.setVisibility(View.VISIBLE);
 	}
 	
-	private void clearAllImageView(ViewParent view) {
-		// TODO Auto-generated method stub
-//		exchangeDesignImageView = (ImageView) view.findViewById(R.id.exchange_design_image);
-//		productorManagerImageView = (ImageView) view.findViewById(R.id.productor_manager_image);
-		exchangeDesignImageView.setVisibility(View.GONE);
-		productorManagerImageView.setVisibility(View.GONE);
-	}
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);

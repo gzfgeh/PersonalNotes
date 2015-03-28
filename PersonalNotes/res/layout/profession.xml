@@ -3,39 +3,41 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/bottom_bg">
+    android:background="@color/bottom_bg"
+    android:id="@+id/profession_layout">
     
     <RelativeLayout 
         android:id="@+id/exchange_design"
-        android:clickable="true"
-        android:onClick="professionClick"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
-        android:padding="5dp">
+        android:padding="5dp"
+		android:clickable="true"
+    	android:onClick="professionClick">
         
         <TextView 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/exchange_design"/>
+        
         <ImageView 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/exchange_design_image"
             android:layout_alignParentRight="true"
-            android:visibility="gone"
-            android:src="@drawable/movie"/>
+            android:src="@drawable/item_selected"
+            android:visibility="gone"/>
     </RelativeLayout>
 
     <RelativeLayout 
         android:id="@+id/productor_manager"
-        android:clickable="true"
-        android:onClick="professionClick"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:padding="5dp"
-        android:layout_margin="2dp">
+        android:layout_margin="2dp"
+        android:clickable="true"
+    	android:onClick="professionClick">
         
         <TextView 
             android:layout_width="wrap_content"
@@ -46,8 +48,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/productor_manager_image"
             android:layout_alignParentRight="true"
-            android:visibility="gone"
-            android:src="@drawable/movie"/>
+            android:src="@drawable/item_selected"
+            android:visibility="gone"/>
     </RelativeLayout>
     
     <RelativeLayout 
@@ -68,8 +70,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:visibility="gone"
-            android:src="@drawable/movie"/>
+            android:id="@+id/ui_design_image"
+            android:src="@drawable/item_selected"
+            android:visibility="gone"/>
     </RelativeLayout>
     
     <RelativeLayout 
@@ -90,8 +93,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:visibility="gone"
-            android:src="@drawable/movie"/>
+            android:id="@+id/js_design_image"
+            android:src="@drawable/item_selected"
+            android:visibility="gone"/>
     </RelativeLayout>
     
     <RelativeLayout 
@@ -112,8 +116,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:visibility="gone"
-            android:src="@drawable/movie"/>
+            android:id="@+id/web_design_image"
+            android:src="@drawable/item_selected"
+            android:visibility="gone"/>
     </RelativeLayout>
     
     <RelativeLayout 
@@ -134,8 +139,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:visibility="gone"
-            android:src="@drawable/movie"/>
+            android:id="@+id/mobile_design_image"
+            android:src="@drawable/item_selected"
+            android:visibility="gone"/>
     </RelativeLayout>
     
     <RelativeLayout 
@@ -156,8 +162,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:visibility="gone"
-            android:src="@drawable/movie"/>
+            android:id="@+id/java_design_image"
+            android:src="@drawable/item_selected"
+            android:visibility="gone"/>
     </RelativeLayout>
     
     <RelativeLayout 
@@ -178,8 +185,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:visibility="gone"
-            android:src="@drawable/movie"/>
+            android:id="@+id/php_design_image"
+            android:src="@drawable/item_selected"
+            android:visibility="gone"/>
     </RelativeLayout>
     
     <RelativeLayout 
@@ -200,8 +208,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:visibility="gone"
-            android:src="@drawable/movie"/>
+            android:id="@+id/linux_design_image"
+            android:src="@drawable/item_selected"
+            android:visibility="gone"/>
     </RelativeLayout>
     
     <RelativeLayout 
@@ -222,8 +231,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:visibility="gone"
-            android:src="@drawable/movie"/>
+            android:id="@+id/software_test_image"
+            android:src="@drawable/item_selected"
+            android:visibility="gone"/>
     </RelativeLayout>
     
     <RelativeLayout 
@@ -244,7 +254,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:src="@drawable/movie"/>
+            android:id="@+id/others_image"
+            android:src="@drawable/item_selected"
+            android:visibility="gone"/>
     </RelativeLayout>
     
 </LinearLayout>
