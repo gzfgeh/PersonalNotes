@@ -76,8 +76,7 @@ public class PersonalInfo extends Activity implements OnClickListener {
 		// TODO Auto-generated method stub
 		switch (view.getId()) {
 		case R.id.head_select:
-			if (!isFinishing())
-				headDialogShow(view);
+			headDialogShow(view);
 			break;
 			
 		case R.id.profession_select:
