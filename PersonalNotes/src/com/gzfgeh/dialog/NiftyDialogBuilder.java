@@ -277,7 +277,6 @@ public class NiftyDialogBuilder extends Dialog implements DialogInterface {
     }
     @Override
     public void show() {
-
         super.show();
     }
 
@@ -292,6 +291,7 @@ public class NiftyDialogBuilder extends Dialog implements DialogInterface {
     @Override
     public void dismiss() {
         super.dismiss();
+        instance = null;
         mButton1.setVisibility(View.GONE);
         mButton2.setVisibility(View.GONE);
     }

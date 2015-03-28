@@ -88,8 +88,6 @@ public class PersonalInfo extends Activity implements OnClickListener {
 			finish();
 			break;
 			
-		
-			
 		default:
 			break;
 		}
