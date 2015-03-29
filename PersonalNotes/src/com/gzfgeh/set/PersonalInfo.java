@@ -5,9 +5,10 @@ import java.io.IOException;
 
 import com.gzfgeh.myapplication.MyApplication;
 import com.gzfgeh.personalnote.R;
+import com.gzfgeh.tools.GetProfessionData;
+import com.gzfgeh.tools.ImageTool;
 import com.gzfgeh.dialog.Effectstype;
 import com.gzfgeh.dialog.NiftyDialogBuilder;
-import com.gzfgeh.imagetool.ImageTool;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -15,12 +16,14 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.text.StaticLayout;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewParent;
+import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 public class PersonalInfo extends Activity implements OnClickListener {
@@ -63,8 +66,6 @@ public class PersonalInfo extends Activity implements OnClickListener {
 		professionSelect = findViewById(R.id.profession_select);
 		professionSelect.setOnClickListener(this);
 		
-		//View view2  = findViewById(R.id.test);
-		
 		myApplication = (MyApplication)getApplication();
 		outputFile = myApplication.getOutputFile();
 		
@@ -97,9 +98,18 @@ public class PersonalInfo extends Activity implements OnClickListener {
 	}
 	private void professionDialogShow(View view) {
 		// TODO Auto-generated method stub
-		dialogBuilder=NiftyDialogBuilder.getInstance(PersonalInfo.this);
+        SimpleAdapter adapter = new SimpleAdapter(this, GetProfessionData.getData(this), R.layout.profession_item,
+        			new String[]{"text", "image"}, new int[]{R.id.profession_item_text, R.id.profession_item_image});
+        LinearLayout linearLayoutMain = new LinearLayout(this);//自定义一个布局文件  
+        linearLayoutMain.setLayoutParams(new LayoutParams(  
+                LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));  
+        ListView listView = new ListView(this);//this为获取当前的上下文  
+        listView.setFadingEdgeLength(0);
+        listView.setAdapter(adapter);
+        linearLayoutMain.addView(listView);
+        
+        dialogBuilder=NiftyDialogBuilder.getInstance(this);
         effect=Effectstype.Slidetop;
-
         dialogBuilder
         		.withMessage(null)
                 .withTitle(getString(R.string.please_select))
@@ -108,7 +118,7 @@ public class PersonalInfo extends Activity implements OnClickListener {
                 .isCancelableOnTouchOutside(false)                          
                 .withDuration(300)                                  
                 .withEffect(effect)                                 
-                .setCustomView(R.layout.profession,view.getContext())
+                .setCustomView(linearLayoutMain,this)
                 .withButton1Text(getString(R.string.ok))
                 .setButton1Click(new OnClickListener() {
 					
