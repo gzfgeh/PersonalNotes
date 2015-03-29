@@ -2,23 +2,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="10dp"
     android:orientation="vertical" >
     
-	<RelativeLayout 
+	<EditText 
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
-	    android:padding="20dp">
-
-	    <com.gzfgeh.animation.RoundImageView
-	        android:id="@+id/login_view"
-	        android:layout_width="60dp"
-	        android:layout_height="60dp"
-	        android:layout_centerInParent="true"
-	        android:layout_centerVertical="true"
-	        android:src="@drawable/drawer_layout_bg"
-	        android:clickable="true"/>
-
-	</RelativeLayout>
+	    android:id="@+id/signature_text"
+	    android:hint="@string/say_something"
+	    android:singleLine="false"
+	    android:maxLines="2"
+	    android:focusable="true"/>
 	
 	
 </LinearLayout>

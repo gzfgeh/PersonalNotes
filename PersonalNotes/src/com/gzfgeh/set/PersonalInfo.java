@@ -22,6 +22,7 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -34,9 +35,9 @@ public class PersonalInfo extends Activity implements OnClickListener {
 	private static final int CROP_PHOTO = 3;
 	
 	private View titleRightView, titleCenterView, titleLeftView;
-	private TextView titleLeftTextView, professionTextView;
+	private TextView titleLeftTextView, professionTextView, signatureTextView;
 	private ImageView headImageView;
-	private View headSelect, professionSelect;
+	private View headSelect, professionSelect, signatureSelect;
 	
 	private Effectstype effect;
 	private NiftyDialogBuilder dialogBuilder;
@@ -64,6 +65,7 @@ public class PersonalInfo extends Activity implements OnClickListener {
 		titleLeftTextView.setText(R.string.personal_info);
 		titleLeftView = findViewById(R.id.title_left);
 		titleLeftView.setOnClickListener(this);
+		
 		headSelect = findViewById(R.id.head_select);
 		headSelect.setOnClickListener(this);
 		headImageView = (ImageView) findViewById(R.id.head_image_view);
@@ -71,6 +73,10 @@ public class PersonalInfo extends Activity implements OnClickListener {
 		professionSelect = findViewById(R.id.profession_select);
 		professionSelect.setOnClickListener(this);
 		professionTextView = (TextView)findViewById(R.id.please_select);
+		
+		signatureSelect = findViewById(R.id.signature_select);
+		signatureSelect.setOnClickListener(this);
+		signatureTextView = (TextView) findViewById(R.id.signature_text);
 		
 		myApplication = (MyApplication)getApplication();
 		outputFile = myApplication.getOutputFile();
@@ -93,6 +99,9 @@ public class PersonalInfo extends Activity implements OnClickListener {
 			professionDialogShow(view);
 			break;
 			
+		case R.id.signature_select:
+			signatureDialogShow(view);
+			break;
 		case R.id.title_left:
 			setResult(RESULT_OK);
 			finish();
@@ -101,6 +110,45 @@ public class PersonalInfo extends Activity implements OnClickListener {
 		default:
 			break;
 		}
+	}
+	private void signatureDialogShow(View view) {
+		LinearLayout linearLayoutMain = new LinearLayout(this);//self define one layout file
+        linearLayoutMain.setLayoutParams(new LayoutParams(  
+                LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
+        final EditText editText = new EditText(this);
+        editText.setLayoutParams(new LayoutParams(  
+                LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
+        linearLayoutMain.addView(editText);
+        
+		dialogBuilder=NiftyDialogBuilder.getInstance(this);
+        effect=Effectstype.Fall;
+        dialogBuilder
+        		.withMessage(null)
+                .withTitle(getString(R.string.signature))
+                .withTitleColor("#33CCFF")                                  
+                .withDividerColor("#33CCFF")
+                .isCancelableOnTouchOutside(true)                          
+                .withDuration(300)                                  
+                .withEffect(effect)                                 
+                .setCustomView(linearLayoutMain,this)
+                .withButton1Text(getString(R.string.ok))
+                .setButton1Click(new OnClickListener() {
+					
+					@Override
+					public void onClick(View view) {
+						signatureTextView.setText(editText.getText().toString());
+						dialogBuilder.dismiss();
+					}
+				})
+				.withButton2Text(getString(R.string.cancle))
+				.setButton2Click(new OnClickListener() {
+					
+					@Override
+					public void onClick(View view) {
+						dialogBuilder.dismiss();
+					}
+				})
+                .show();
 	}
 	private void professionDialogShow(View view) {
 		// TODO Auto-generated method stub
@@ -139,7 +187,6 @@ public class PersonalInfo extends Activity implements OnClickListener {
 					
 					@Override
 					public void onClick(View view) {
-						professionTextView.setText(professionText[professionIndex]);
 						dialogBuilder.dismiss();
 					}
 				})

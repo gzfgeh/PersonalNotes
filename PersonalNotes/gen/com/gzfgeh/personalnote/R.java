@@ -1047,7 +1047,7 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f050016;
         public static final int action_menu_presenter=0x7f050017;
         public static final int action_mode_close_button=0x7f050026;
-        public static final int action_settings=0x7f05009b;
+        public static final int action_settings=0x7f05009a;
         public static final int activity_chooser_view_content=0x7f050027;
         public static final int alertTitle=0x7f050049;
         public static final int always=0x7f05000b;
@@ -1096,7 +1096,6 @@ containing a value of this type.
         public static final int linux_design_image=0x7f050090;
         public static final int listMode=0x7f050001;
         public static final int list_item=0x7f05002b;
-        public static final int login_view=0x7f050097;
         public static final int main=0x7f050045;
         public static final int make_photo=0x7f050044;
         public static final int message=0x7f05004c;
@@ -1160,13 +1159,13 @@ containing a value of this type.
         public static final int signature_text=0x7f050070;
         public static final int software_test=0x7f050091;
         public static final int software_test_image=0x7f050092;
-        public static final int sounds_fragment_layout=0x7f050098;
+        public static final int sounds_fragment_layout=0x7f050097;
         public static final int sounds_layout=0x7f050063;
         public static final int sounds_msg=0x7f050064;
         public static final int split_action_bar=0x7f050020;
         public static final int submit_area=0x7f05003b;
         public static final int tabMode=0x7f050002;
-        public static final int text_fragment_layout=0x7f050099;
+        public static final int text_fragment_layout=0x7f050098;
         public static final int text_layout=0x7f05005f;
         public static final int text_msg=0x7f050060;
         public static final int title=0x7f05002d;
@@ -1183,7 +1182,7 @@ containing a value of this type.
         public static final int title_template=0x7f050048;
         public static final int topPanel=0x7f050047;
         public static final int top_action_bar=0x7f050022;
-        public static final int transparent_cancle=0x7f05009a;
+        public static final int transparent_cancle=0x7f050099;
         public static final int ui_design=0x7f050083;
         public static final int ui_design_image=0x7f050084;
         public static final int up=0x7f050023;
@@ -1334,6 +1333,7 @@ containing a value of this type.
         public static final int productor_manager=0x7f0a002b;
         public static final int profession=0x7f0a001f;
         public static final int region=0x7f0a0023;
+        public static final int say_something=0x7f0a0037;
         public static final int setting=0x7f0a0018;
         public static final int sexual=0x7f0a0022;
         public static final int sexual_default=0x7f0a0027;
