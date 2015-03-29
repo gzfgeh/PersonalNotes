@@ -20,6 +20,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -32,8 +34,8 @@ public class PersonalInfo extends Activity implements OnClickListener {
 	private static final int CROP_PHOTO = 3;
 	
 	private View titleRightView, titleCenterView, titleLeftView;
-	private TextView titleLeftTextView;
-	private ImageView headImageView, professionImageView;
+	private TextView titleLeftTextView, professionTextView;
+	private ImageView headImageView;
 	private View headSelect, professionSelect;
 	
 	private Effectstype effect;
@@ -43,6 +45,9 @@ public class PersonalInfo extends Activity implements OnClickListener {
 	private Intent getImageIntent;
 	private File outputFile;
 	private Uri imageUri;
+	
+	int professionIndex = 0;
+	public static String[] professionText;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -65,19 +70,20 @@ public class PersonalInfo extends Activity implements OnClickListener {
 		
 		professionSelect = findViewById(R.id.profession_select);
 		professionSelect.setOnClickListener(this);
+		professionTextView = (TextView)findViewById(R.id.please_select);
 		
 		myApplication = (MyApplication)getApplication();
 		outputFile = myApplication.getOutputFile();
-		
 		if (outputFile.length() == 0 || !outputFile.exists())
 			headImageView.setImageResource(R.drawable.default_image);
 		else 
 			headImageView.setImageBitmap(ImageTool.setSDImageView(outputFile.getAbsolutePath()));
 		
+		professionText = this.getResources().getStringArray(R.array.professions);
+		
 	}
 	@Override
 	public void onClick(View view) {
-		// TODO Auto-generated method stub
 		switch (view.getId()) {
 		case R.id.head_select:
 			headDialogShow(view);
@@ -100,11 +106,11 @@ public class PersonalInfo extends Activity implements OnClickListener {
 		// TODO Auto-generated method stub
         SimpleAdapter adapter = new SimpleAdapter(this, GetProfessionData.getData(this), R.layout.profession_item,
         			new String[]{"text", "image"}, new int[]{R.id.profession_item_text, R.id.profession_item_image});
-        LinearLayout linearLayoutMain = new LinearLayout(this);//自定义一个布局文件  
+        LinearLayout linearLayoutMain = new LinearLayout(this);//self define one layout file
         linearLayoutMain.setLayoutParams(new LayoutParams(  
-                LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));  
-        ListView listView = new ListView(this);//this为获取当前的上下文  
-        listView.setFadingEdgeLength(0);
+                LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));  
+        ListView listView = new ListView(this); 
+        listView.setFadingEdgeLength(0);	//解决拖拉到上顶下边的阴影
         listView.setAdapter(adapter);
         linearLayoutMain.addView(listView);
         
@@ -124,7 +130,7 @@ public class PersonalInfo extends Activity implements OnClickListener {
 					
 					@Override
 					public void onClick(View view) {
-						// TODO Auto-generated method stub
+						professionTextView.setText(professionText[professionIndex]);
 						dialogBuilder.dismiss();
 					}
 				})
@@ -133,11 +139,24 @@ public class PersonalInfo extends Activity implements OnClickListener {
 					
 					@Override
 					public void onClick(View view) {
-						// TODO Auto-generated method stub
+						professionTextView.setText(professionText[professionIndex]);
 						dialogBuilder.dismiss();
 					}
 				})
                 .show();
+        
+        listView.setOnItemClickListener(new OnItemClickListener() {
+        	ImageView imageView;
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				if (imageView != null)
+					imageView.setVisibility(View.INVISIBLE);
+				imageView = (ImageView) view.findViewById(R.id.profession_item_image);
+				imageView.setVisibility(View.VISIBLE);
+				professionIndex = position;
+			}
+		});
 	}
 	private void headDialogShow(View view) {
 		// TODO Auto-generated method stub
@@ -183,62 +202,6 @@ public class PersonalInfo extends Activity implements OnClickListener {
 			break;
 		}
 		dialogBuilder.dismiss();
-	}
-	
-	public void professionClick(View view){
-		
-		if (professionImageView != null)
-			professionImageView.setVisibility(View.GONE);
-		
-		switch (view.getId()) {
-		case R.id.exchange_design:
-			professionImageView = (ImageView) view.findViewById(R.id.exchange_design_image);
-			break;
-			
-		case R.id.productor_manager:
-			professionImageView = (ImageView) view.findViewById(R.id.productor_manager_image);
-			break;
-		
-		case R.id.ui_design:
-			professionImageView = (ImageView) view.findViewById(R.id.ui_design_image);
-			break;
-			
-		case R.id.js_design:
-			professionImageView = (ImageView) view.findViewById(R.id.js_design_image);
-			break;
-			
-		case R.id.web_design:
-			professionImageView = (ImageView) view.findViewById(R.id.web_design_image);
-			break;
-			
-		case R.id.java_design:
-			professionImageView = (ImageView) view.findViewById(R.id.java_design_image);
-			break;
-			
-		case R.id.others:
-			professionImageView = (ImageView) view.findViewById(R.id.others_image);
-			break;
-			
-		case R.id.mobile_design:
-			professionImageView = (ImageView) view.findViewById(R.id.mobile_design_image);
-			break;
-			
-		case R.id.php_design:
-			professionImageView = (ImageView) view.findViewById(R.id.php_design_image);
-			break;
-			
-		case R.id.linux_design:
-			professionImageView = (ImageView) view.findViewById(R.id.linux_design_image);
-			break;
-			
-		case R.id.software_test:
-			professionImageView = (ImageView) view.findViewById(R.id.software_test_image);
-			break;
-			
-		default:
-			break;
-		}
-		professionImageView.setVisibility(View.VISIBLE);
 	}
 	
 	@Override

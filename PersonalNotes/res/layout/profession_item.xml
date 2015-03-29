@@ -5,17 +5,30 @@
     android:orientation="horizontal"
     android:padding="5dp">
     
-	<TextView 
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:id="@+id/profession_item_text"/>
+    <RelativeLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp">
         
-	<ImageView 
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:id="@+id/profession_item_image"
-	    android:layout_gravity="right"
-	    android:src="@drawable/item_selected"
-	    android:visibility="gone"/>
+        <TextView 
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_alignParentLeft="true"
+		    android:layout_centerHorizontal="true"
+		    android:id="@+id/profession_item_text"/>
+        
+		<ImageView 
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:id="@+id/profession_item_image"
+		    android:layout_alignParentRight="true"
+		    android:layout_centerVertical="true"
+		    android:src="@drawable/item_selected"
+		    android:visibility="invisible"/>
+		
+    </RelativeLayout>
+	
         
 </LinearLayout>
