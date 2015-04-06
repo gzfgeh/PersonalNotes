@@ -60,7 +60,14 @@
             android:theme="@android:style/Theme.Translucent">
         </activity>
         
-        <service android:name="com.baidu.location.f" android:enabled="true" android:process=":remote"/>
+        <service 
+            android:name="com.baidu.location.f" 
+            android:enabled="true" 
+            android:process=":remote">
+            <intent-filter >
+                <action android:name="com.baidu.location.service_v2.2"/>
+            </intent-filter>
+        </service>
             
     </application>
 

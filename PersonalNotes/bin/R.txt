@@ -270,7 +270,7 @@ int id action_context_bar 0x7f05001f
 int id action_menu_divider 0x7f050016
 int id action_menu_presenter 0x7f050017
 int id action_mode_close_button 0x7f050026
-int id action_settings 0x7f05009d
+int id action_settings 0x7f05009e
 int id activity_chooser_view_content 0x7f050027
 int id alertTitle 0x7f050049
 int id always 0x7f05000b
@@ -323,6 +323,7 @@ int id listMode 0x7f050001
 int id list_item 0x7f05002b
 int id main 0x7f050045
 int id make_photo 0x7f050044
+int id map 0x7f05009a
 int id message 0x7f05004c
 int id middle 0x7f050012
 int id mobile_design 0x7f050089
@@ -385,13 +386,13 @@ int id signature_select_right 0x7f05006f
 int id signature_text 0x7f050070
 int id software_test 0x7f050091
 int id software_test_image 0x7f050092
-int id sounds_fragment_layout 0x7f05009a
+int id sounds_fragment_layout 0x7f05009b
 int id sounds_layout 0x7f050063
 int id sounds_msg 0x7f050064
 int id split_action_bar 0x7f050020
 int id submit_area 0x7f05003b
 int id tabMode 0x7f050002
-int id text_fragment_layout 0x7f05009b
+int id text_fragment_layout 0x7f05009c
 int id text_layout 0x7f05005f
 int id text_msg 0x7f050060
 int id title 0x7f05002d
@@ -408,7 +409,7 @@ int id title_right_text 0x7f050058
 int id title_template 0x7f050048
 int id topPanel 0x7f050047
 int id top_action_bar 0x7f050022
-int id transparent_cancle 0x7f05009c
+int id transparent_cancle 0x7f05009d
 int id ui_design 0x7f050083
 int id ui_design_image 0x7f050084
 int id up 0x7f050023

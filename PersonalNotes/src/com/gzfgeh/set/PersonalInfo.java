@@ -454,6 +454,7 @@ public class PersonalInfo extends Activity implements OnClickListener {
 			case REQUEST_CODE:
 				regionTextView.setText(data.getExtras().getString("region"));
 				break;
+				
 			default:
 				headImageView.setImageResource(R.drawable.default_image);
 				break;
