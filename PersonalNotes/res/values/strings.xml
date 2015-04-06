@@ -44,5 +44,10 @@
 	<string name="others">其他</string>
 	<string name="ok">OK</string>
 	<string name="say_something">说点什么吧！</string>
+	<string name="man">男</string>
+	<string name="woman">女</string>
+	<string name="province">省份</string>
+	<string name="city">市/区</string>
+	<string name="county">区/县</string>
 	
 </resources>
