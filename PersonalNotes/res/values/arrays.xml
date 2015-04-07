@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="professions">
+	  <item>交互设计师</item>
+	  <item>产品经理</item>
+	  <item>UI设计师</item>
+	  <item>JS设计师</item>
+	  <item>WEB设计师</item>
+	  <item>移动设计师</item>
+	  <item>PHP开发设计师</item>
+	  <item>软件测试工程师</item>
+	  <item>Linux系统工程师</item>
+	  <item>JAVA工程师</item>
+	  <item>其他</item>
+    </string-array>
+</resources>

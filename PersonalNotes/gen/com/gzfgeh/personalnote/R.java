@@ -16,6 +16,9 @@ public final class R {
         public static final int abc_slide_out_bottom=0x7f040004;
         public static final int abc_slide_out_top=0x7f040005;
     }
+    public static final class array {
+        public static final int professions=0x7f0c0000;
+    }
     public static final class attr {
         /**  Custom divider drawable to use for elements in the action bar. 
          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
@@ -1029,8 +1032,9 @@ containing a value of this type.
         public static final int other_login=0x7f020065;
         public static final int photo=0x7f020066;
         public static final int setting=0x7f020067;
-        public static final int sounds=0x7f020068;
-        public static final int text=0x7f020069;
+        public static final int shape_file=0x7f020068;
+        public static final int sounds=0x7f020069;
+        public static final int text=0x7f02006a;
     }
     public static final class id {
         public static final int action_bar=0x7f05001e;
@@ -1044,7 +1048,7 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f050016;
         public static final int action_menu_presenter=0x7f050017;
         public static final int action_mode_close_button=0x7f050026;
-        public static final int action_settings=0x7f050099;
+        public static final int action_settings=0x7f05009e;
         public static final int activity_chooser_view_content=0x7f050027;
         public static final int alertTitle=0x7f050049;
         public static final int always=0x7f05000b;
@@ -1054,9 +1058,11 @@ containing a value of this type.
         public static final int button2=0x7f05004f;
         public static final int checkbox=0x7f05002f;
         public static final int circle=0x7f05001a;
+        public static final int city=0x7f050098;
         public static final int collapseActionView=0x7f05000d;
         public static final int container=0x7f050040;
         public static final int contentPanel=0x7f05004b;
+        public static final int county=0x7f050099;
         public static final int cursor=0x7f05005e;
         public static final int customPanel=0x7f05004d;
         public static final int default_activity_button=0x7f05002a;
@@ -1093,9 +1099,9 @@ containing a value of this type.
         public static final int linux_design_image=0x7f050090;
         public static final int listMode=0x7f050001;
         public static final int list_item=0x7f05002b;
-        public static final int login_view=0x7f050095;
         public static final int main=0x7f050045;
         public static final int make_photo=0x7f050044;
+        public static final int map=0x7f05009a;
         public static final int message=0x7f05004c;
         public static final int middle=0x7f050012;
         public static final int mobile_design=0x7f050089;
@@ -1121,11 +1127,14 @@ containing a value of this type.
         public static final int please_select=0x7f05006d;
         public static final int productor_manager=0x7f050081;
         public static final int productor_manager_image=0x7f050082;
+        public static final int profession_item_image=0x7f050096;
+        public static final int profession_item_text=0x7f050095;
         public static final int profession_layout=0x7f05007e;
         public static final int profession_select=0x7f05006b;
         public static final int profession_select_right=0x7f05006c;
         public static final int progress_circular=0x7f050018;
         public static final int progress_horizontal=0x7f050019;
+        public static final int province=0x7f050097;
         public static final int radio=0x7f050031;
         public static final int region_default=0x7f050079;
         public static final int region_select=0x7f050077;
@@ -1155,13 +1164,13 @@ containing a value of this type.
         public static final int signature_text=0x7f050070;
         public static final int software_test=0x7f050091;
         public static final int software_test_image=0x7f050092;
-        public static final int sounds_fragment_layout=0x7f050096;
+        public static final int sounds_fragment_layout=0x7f05009b;
         public static final int sounds_layout=0x7f050063;
         public static final int sounds_msg=0x7f050064;
         public static final int split_action_bar=0x7f050020;
         public static final int submit_area=0x7f05003b;
         public static final int tabMode=0x7f050002;
-        public static final int text_fragment_layout=0x7f050097;
+        public static final int text_fragment_layout=0x7f05009c;
         public static final int text_layout=0x7f05005f;
         public static final int text_msg=0x7f050060;
         public static final int title=0x7f05002d;
@@ -1178,7 +1187,7 @@ containing a value of this type.
         public static final int title_template=0x7f050048;
         public static final int topPanel=0x7f050047;
         public static final int top_action_bar=0x7f050022;
-        public static final int transparent_cancle=0x7f050098;
+        public static final int transparent_cancle=0x7f05009d;
         public static final int ui_design=0x7f050083;
         public static final int ui_design_image=0x7f050084;
         public static final int up=0x7f050023;
@@ -1248,14 +1257,16 @@ containing a value of this type.
         public static final int personal_info=0x7f03001f;
         public static final int photo_fragment=0x7f030020;
         public static final int profession=0x7f030021;
-        public static final int setting=0x7f030022;
-        public static final int sounds_fragment=0x7f030023;
-        public static final int support_simple_spinner_dropdown_item=0x7f030024;
-        public static final int text_fragment=0x7f030025;
-        public static final int transparent_activity=0x7f030026;
+        public static final int profession_item=0x7f030022;
+        public static final int region_select=0x7f030023;
+        public static final int setting=0x7f030024;
+        public static final int sounds_fragment=0x7f030025;
+        public static final int support_simple_spinner_dropdown_item=0x7f030026;
+        public static final int text_fragment=0x7f030027;
+        public static final int transparent_activity=0x7f030028;
     }
     public static final class menu {
-        public static final int main=0x7f0c0000;
+        public static final int main=0x7f0d0000;
     }
     public static final class string {
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
@@ -1303,6 +1314,8 @@ containing a value of this type.
         public static final int back=0x7f0a0010;
         public static final int cancle=0x7f0a001a;
         public static final int change_image=0x7f0a0028;
+        public static final int city=0x7f0a003b;
+        public static final int county=0x7f0a003c;
         public static final int edit=0x7f0a0012;
         public static final int email_addr=0x7f0a0024;
         public static final int exchange_design=0x7f0a002a;
@@ -1314,6 +1327,7 @@ containing a value of this type.
         public static final int js_design=0x7f0a002d;
         public static final int linux_design=0x7f0a0032;
         public static final int make_photo=0x7f0a001c;
+        public static final int man=0x7f0a0038;
         public static final int mobile_design=0x7f0a002f;
         public static final int movie=0x7f0a0016;
         public static final int nickname=0x7f0a0021;
@@ -1327,7 +1341,9 @@ containing a value of this type.
         public static final int please_select=0x7f0a0025;
         public static final int productor_manager=0x7f0a002b;
         public static final int profession=0x7f0a001f;
+        public static final int province=0x7f0a003a;
         public static final int region=0x7f0a0023;
+        public static final int say_something=0x7f0a0037;
         public static final int setting=0x7f0a0018;
         public static final int sexual=0x7f0a0022;
         public static final int sexual_default=0x7f0a0027;
@@ -1340,6 +1356,7 @@ containing a value of this type.
         public static final int title=0x7f0a0011;
         public static final int ui_design=0x7f0a002c;
         public static final int web_design=0x7f0a002e;
+        public static final int woman=0x7f0a0039;
     }
     public static final class style {
         /** 

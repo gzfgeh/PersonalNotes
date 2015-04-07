@@ -5,9 +5,10 @@ import java.io.IOException;
 
 import com.gzfgeh.myapplication.MyApplication;
 import com.gzfgeh.personalnote.R;
+import com.gzfgeh.tools.GetProfessionData;
+import com.gzfgeh.tools.ImageTool;
 import com.gzfgeh.dialog.Effectstype;
 import com.gzfgeh.dialog.NiftyDialogBuilder;
-import com.gzfgeh.imagetool.ImageTool;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -15,23 +16,32 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.text.StaticLayout;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewParent;
+import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 public class PersonalInfo extends Activity implements OnClickListener {
+	private static final int REQUEST_CODE = 4;
 	private static final int FROM_CAPTURE = 1;
 	private static final int FROM_GALLERY = 2;
 	private static final int CROP_PHOTO = 3;
 	
 	private View titleRightView, titleCenterView, titleLeftView;
-	private TextView titleLeftTextView;
-	private ImageView headImageView, professionImageView;
-	private View headSelect, professionSelect;
+	private TextView titleLeftTextView, professionTextView, signatureTextView, nicknameTextView, sexualTextView, regionTextView, emailTextView;
+	private ImageView headImageView;
+	private View headSelect, professionSelect, signatureSelect, nicknameSelect, sexualSelect, regionSelect, emailSelect;
 	
 	private Effectstype effect;
 	private NiftyDialogBuilder dialogBuilder;
@@ -40,6 +50,9 @@ public class PersonalInfo extends Activity implements OnClickListener {
 	private Intent getImageIntent;
 	private File outputFile;
 	private Uri imageUri;
+	
+	int professionIndex = 0;
+	public static String[] professionText;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -56,27 +69,47 @@ public class PersonalInfo extends Activity implements OnClickListener {
 		titleLeftTextView.setText(R.string.personal_info);
 		titleLeftView = findViewById(R.id.title_left);
 		titleLeftView.setOnClickListener(this);
+		
 		headSelect = findViewById(R.id.head_select);
 		headSelect.setOnClickListener(this);
 		headImageView = (ImageView) findViewById(R.id.head_image_view);
 		
 		professionSelect = findViewById(R.id.profession_select);
 		professionSelect.setOnClickListener(this);
+		professionTextView = (TextView)findViewById(R.id.please_select);
 		
-		//View view2  = findViewById(R.id.test);
+		signatureSelect = findViewById(R.id.signature_select);
+		signatureSelect.setOnClickListener(this);
+		signatureTextView = (TextView) findViewById(R.id.signature_text);
+		
+		nicknameSelect = findViewById(R.id.nickname_select);
+		nicknameSelect.setOnClickListener(this);
+		nicknameTextView = (TextView) findViewById(R.id.nickname_default);
+		
+		sexualSelect = findViewById(R.id.sexual_select);
+		sexualSelect.setOnClickListener(this);
+		sexualTextView = (TextView) findViewById(R.id.sexual_default);
+		
+		regionSelect = findViewById(R.id.region_select);
+		regionSelect.setOnClickListener(this);
+		regionTextView = (TextView) findViewById(R.id.region_default);
+		
+		emailSelect = findViewById(R.id.email_addr_select);
+		emailSelect.setOnClickListener(this);
+		emailTextView = (TextView) findViewById(R.id.email_addr_default);
 		
 		myApplication = (MyApplication)getApplication();
 		outputFile = myApplication.getOutputFile();
-		
 		if (outputFile.length() == 0 || !outputFile.exists())
 			headImageView.setImageResource(R.drawable.default_image);
 		else 
 			headImageView.setImageBitmap(ImageTool.setSDImageView(outputFile.getAbsolutePath()));
 		
+		professionText = this.getResources().getStringArray(R.array.professions);
+		
 	}
 	@Override
 	public void onClick(View view) {
-		// TODO Auto-generated method stub
 		switch (view.getId()) {
 		case R.id.head_select:
 			headDialogShow(view);
@@ -84,6 +117,26 @@ public class PersonalInfo extends Activity implements OnClickListener {
 			
 		case R.id.profession_select:
 			professionDialogShow(view);
+			break;
+			
+		case R.id.signature_select:
+			signatureDialogShow(view);
+			break;
+			
+		case R.id.nickname_select:
+			nickNameDialogShow(view);
+			break;
+			
+		case R.id.sexual_select:
+			sexualDialogShow(view);
+			break;
+			
+		case R.id.region_select:
+			Intent intent = new Intent(this, RegionSelect.class);
+			startActivityForResult(intent, REQUEST_CODE);
+			break;
+		case R.id.email_addr_select:
+			emailDialogShow(view);
 			break;
 			
 		case R.id.title_left:
@@ -95,26 +148,33 @@ public class PersonalInfo extends Activity implements OnClickListener {
 			break;
 		}
 	}
-	private void professionDialogShow(View view) {
+	private void emailDialogShow(View view) {
 		// TODO Auto-generated method stub
-		dialogBuilder=NiftyDialogBuilder.getInstance(PersonalInfo.this);
-        effect=Effectstype.Slidetop;
-
+		LinearLayout linearLayoutMain = new LinearLayout(this);//self define one layout file
+        linearLayoutMain.setLayoutParams(new LayoutParams(  
+                LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
+        final EditText editText = new EditText(this);
+        editText.setLayoutParams(new LayoutParams(  
+                LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
+        linearLayoutMain.addView(editText);
+        
+		dialogBuilder=NiftyDialogBuilder.getInstance(this);
+        effect=Effectstype.Shake;
         dialogBuilder
         		.withMessage(null)
                 .withTitle(getString(R.string.please_select))
                 .withTitleColor("#33CCFF")                                  
                 .withDividerColor("#33CCFF")
-                .isCancelableOnTouchOutside(false)                          
+                .isCancelableOnTouchOutside(true)                          
                 .withDuration(300)                                  
                 .withEffect(effect)                                 
-                .setCustomView(R.layout.profession,view.getContext())
+                .setCustomView(linearLayoutMain,this)
                 .withButton1Text(getString(R.string.ok))
                 .setButton1Click(new OnClickListener() {
 					
 					@Override
 					public void onClick(View view) {
-						// TODO Auto-generated method stub
+						emailTextView.setText(editText.getText().toString());
 						dialogBuilder.dismiss();
 					}
 				})
@@ -123,11 +183,203 @@ public class PersonalInfo extends Activity implements OnClickListener {
 					
 					@Override
 					public void onClick(View view) {
-						// TODO Auto-generated method stub
 						dialogBuilder.dismiss();
 					}
 				})
                 .show();
+	}
+	
+	private void nickNameDialogShow(View view) {
+		// TODO Auto-generated method stub
+		LinearLayout linearLayoutMain = new LinearLayout(this);//self define one layout file
+        linearLayoutMain.setLayoutParams(new LayoutParams(  
+                LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
+        final EditText editText = new EditText(this);
+        editText.setLayoutParams(new LayoutParams(  
+                LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
+        linearLayoutMain.addView(editText);
+        
+		dialogBuilder=NiftyDialogBuilder.getInstance(this);
+        effect=Effectstype.Newspager;
+        dialogBuilder
+        		.withMessage(null)
+                .withTitle(getString(R.string.nickname))
+                .withTitleColor("#33CCFF")                                  
+                .withDividerColor("#33CCFF")
+                .isCancelableOnTouchOutside(true)                          
+                .withDuration(300)                                  
+                .withEffect(effect)                                 
+                .setCustomView(linearLayoutMain,this)
+                .withButton1Text(getString(R.string.ok))
+                .setButton1Click(new OnClickListener() {
+					
+					@Override
+					public void onClick(View view) {
+						nicknameTextView.setText(editText.getText().toString());
+						dialogBuilder.dismiss();
+					}
+				})
+				.withButton2Text(getString(R.string.cancle))
+				.setButton2Click(new OnClickListener() {
+					
+					@Override
+					public void onClick(View view) {
+						dialogBuilder.dismiss();
+					}
+				})
+                .show();
+	}
+	private void sexualDialogShow(View view) {
+		// TODO Auto-generated method stub
+		LinearLayout linearLayoutMain = new LinearLayout(this);//self define one layout file
+        linearLayoutMain.setLayoutParams(new LayoutParams(  
+                LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
+        final RadioGroup radioGroup = new RadioGroup(this);
+        RadioButton radioButton1 = new RadioButton(this);
+        radioButton1.setPadding(10, 0, 0, 0);
+        radioButton1.setText(R.string.man);
+        radioGroup.addView(radioButton1, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        
+        RadioButton radioButton2 = new RadioButton(this);
+        radioButton2.setPadding(10, 0, 0, 0);
+        radioButton2.setText(R.string.woman);
+        radioGroup.addView(radioButton2, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        
+        linearLayoutMain.addView(radioGroup);
+        radioGroup.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+			
+			@Override
+			public void onCheckedChanged(RadioGroup group, int checkedId) {
+				// TODO Auto-generated method stub
+				if (checkedId%2 == 1)
+					sexualTextView.setText(getString(R.string.man));
+				else 
+					sexualTextView.setText(getString(R.string.woman));
+			}
+		});
+        dialogBuilder=NiftyDialogBuilder.getInstance(this);
+        effect=Effectstype.Flipv;
+        dialogBuilder
+        		.withMessage(null)
+                .withTitle(getString(R.string.please_select))
+                .withTitleColor("#33CCFF")                                  
+                .withDividerColor("#33CCFF")
+                .isCancelableOnTouchOutside(false)                          
+                .withDuration(300)                                  
+                .withEffect(effect)                                 
+                .setCustomView(linearLayoutMain,this)
+                .withButton1Text(getString(R.string.ok))
+                .setButton1Click(new OnClickListener() {
+					
+					@Override
+					public void onClick(View view) {
+						//signatureTextView.setText(radioButton1.getText().toString());
+						dialogBuilder.dismiss();
+					}
+				})
+				.withButton2Text(getString(R.string.cancle))
+				.setButton2Click(new OnClickListener() {
+					
+					@Override
+					public void onClick(View view) {
+						dialogBuilder.dismiss();
+					}
+				})
+                .show();
+	}
+	private void signatureDialogShow(View view) {
+		LinearLayout linearLayoutMain = new LinearLayout(this);//self define one layout file
+        linearLayoutMain.setLayoutParams(new LayoutParams(  
+                LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
+        final EditText editText = new EditText(this);
+        editText.setLayoutParams(new LayoutParams(  
+                LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
+        linearLayoutMain.addView(editText);
+        
+		dialogBuilder=NiftyDialogBuilder.getInstance(this);
+        effect=Effectstype.Fall;
+        dialogBuilder
+        		.withMessage(null)
+                .withTitle(getString(R.string.signature))
+                .withTitleColor("#33CCFF")                                  
+                .withDividerColor("#33CCFF")
+                .isCancelableOnTouchOutside(true)                          
+                .withDuration(300)                                  
+                .withEffect(effect)                                 
+                .setCustomView(linearLayoutMain,this)
+                .withButton1Text(getString(R.string.ok))
+                .setButton1Click(new OnClickListener() {
+					
+					@Override
+					public void onClick(View view) {
+						signatureTextView.setText(editText.getText().toString());
+						dialogBuilder.dismiss();
+					}
+				})
+				.withButton2Text(getString(R.string.cancle))
+				.setButton2Click(new OnClickListener() {
+					
+					@Override
+					public void onClick(View view) {
+						dialogBuilder.dismiss();
+					}
+				})
+                .show();
+	}
+	private void professionDialogShow(View view) {
+		// TODO Auto-generated method stub
+        SimpleAdapter adapter = new SimpleAdapter(this, GetProfessionData.getData(this), R.layout.profession_item,
+        			new String[]{"text", "image"}, new int[]{R.id.profession_item_text, R.id.profession_item_image});
+        LinearLayout linearLayoutMain = new LinearLayout(this);//self define one layout file
+        linearLayoutMain.setLayoutParams(new LayoutParams(  
+                LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));  
+        ListView listView = new ListView(this); 
+        listView.setFadingEdgeLength(0);	//解决拖拉到上顶下边的阴影
+        listView.setAdapter(adapter);
+        linearLayoutMain.addView(listView);
+        
+        dialogBuilder=NiftyDialogBuilder.getInstance(this);
+        effect=Effectstype.Slidetop;
+        dialogBuilder
+        		.withMessage(null)
+                .withTitle(getString(R.string.please_select))
+                .withTitleColor("#33CCFF")                                  
+                .withDividerColor("#33CCFF")
+                .isCancelableOnTouchOutside(false)                          
+                .withDuration(300)                                  
+                .withEffect(effect)                                 
+                .setCustomView(linearLayoutMain,this)
+                .withButton1Text(getString(R.string.ok))
+                .setButton1Click(new OnClickListener() {
+					
+					@Override
+					public void onClick(View view) {
+						professionTextView.setText(professionText[professionIndex]);
+						dialogBuilder.dismiss();
+					}
+				})
+				.withButton2Text(getString(R.string.cancle))
+				.setButton2Click(new OnClickListener() {
+					
+					@Override
+					public void onClick(View view) {
+						dialogBuilder.dismiss();
+					}
+				})
+                .show();
+        
+        listView.setOnItemClickListener(new OnItemClickListener() {
+        	ImageView imageView;
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				if (imageView != null)
+					imageView.setVisibility(View.INVISIBLE);
+				imageView = (ImageView) view.findViewById(R.id.profession_item_image);
+				imageView.setVisibility(View.VISIBLE);
+				professionIndex = position;
+			}
+		});
 	}
 	private void headDialogShow(View view) {
 		// TODO Auto-generated method stub
@@ -175,62 +427,6 @@ public class PersonalInfo extends Activity implements OnClickListener {
 		dialogBuilder.dismiss();
 	}
 	
-	public void professionClick(View view){
-		
-		if (professionImageView != null)
-			professionImageView.setVisibility(View.GONE);
-		
-		switch (view.getId()) {
-		case R.id.exchange_design:
-			professionImageView = (ImageView) view.findViewById(R.id.exchange_design_image);
-			break;
-			
-		case R.id.productor_manager:
-			professionImageView = (ImageView) view.findViewById(R.id.productor_manager_image);
-			break;
-		
-		case R.id.ui_design:
-			professionImageView = (ImageView) view.findViewById(R.id.ui_design_image);
-			break;
-			
-		case R.id.js_design:
-			professionImageView = (ImageView) view.findViewById(R.id.js_design_image);
-			break;
-			
-		case R.id.web_design:
-			professionImageView = (ImageView) view.findViewById(R.id.web_design_image);
-			break;
-			
-		case R.id.java_design:
-			professionImageView = (ImageView) view.findViewById(R.id.java_design_image);
-			break;
-			
-		case R.id.others:
-			professionImageView = (ImageView) view.findViewById(R.id.others_image);
-			break;
-			
-		case R.id.mobile_design:
-			professionImageView = (ImageView) view.findViewById(R.id.mobile_design_image);
-			break;
-			
-		case R.id.php_design:
-			professionImageView = (ImageView) view.findViewById(R.id.php_design_image);
-			break;
-			
-		case R.id.linux_design:
-			professionImageView = (ImageView) view.findViewById(R.id.linux_design_image);
-			break;
-			
-		case R.id.software_test:
-			professionImageView = (ImageView) view.findViewById(R.id.software_test_image);
-			break;
-			
-		default:
-			break;
-		}
-		professionImageView.setVisibility(View.VISIBLE);
-	}
-	
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
@@ -253,6 +449,10 @@ public class PersonalInfo extends Activity implements OnClickListener {
 					ImageTool.saveBitmapToSDCard(outputFile,bitmap);
 					headImageView.setImageBitmap(bitmap);
 				}
+				break;
+				
+			case REQUEST_CODE:
+				regionTextView.setText(data.getExtras().getString("region"));
 				break;
 				
 			default:

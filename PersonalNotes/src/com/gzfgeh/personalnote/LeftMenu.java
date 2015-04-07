@@ -3,10 +3,11 @@ package com.gzfgeh.personalnote;
 import java.io.File;
 
 import com.gzfgeh.animation.RoundImageView;
-import com.gzfgeh.imagetool.ImageTool;
 import com.gzfgeh.myapplication.MyApplication;
+import com.gzfgeh.set.OtherLogin;
 import com.gzfgeh.set.PersonalInfo;
 import com.gzfgeh.set.Setting;
+import com.gzfgeh.tools.ImageTool;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,7 +22,7 @@ public class LeftMenu extends Fragment implements OnClickListener {
 	private MyApplication myApplication;
 	private File outputFile;
 	
-	private View setView, personalSet;
+	private View setView, personalSet, otherLogin;
 	private RoundImageView selfView;
 	
 	@Override
@@ -34,6 +35,9 @@ public class LeftMenu extends Fragment implements OnClickListener {
 		personalSet = view.findViewById(R.id.personal_set);
 		personalSet.setOnClickListener(this);
 		selfView = (RoundImageView) view.findViewById(R.id.self_view);
+		
+		otherLogin = view.findViewById(R.id.left_menu_other_login);
+		otherLogin.setOnClickListener(this);
 		
 		myApplication = (MyApplication)getActivity().getApplication();
 		outputFile = myApplication.getOutputFile();
@@ -53,9 +57,16 @@ public class LeftMenu extends Fragment implements OnClickListener {
 			getActivity().startActivity(intent);
 			break;
 		
+		case R.id.left_menu_other_login:
+			intent = new Intent(getActivity(), OtherLogin.class);
+			getActivity().startActivity(intent);
+			break;
+			
 		case R.id.personal_set:
 			intent = new Intent(getActivity(), PersonalInfo.class);
 			startActivityForResult(intent, REQUEST_CODE);
+			break;
+			
 		default:
 			break;
 		}

@@ -1,4 +1,4 @@
-package com.gzfgeh.imagetool;
+package com.gzfgeh.tools;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -50,7 +50,7 @@ public final class ImageTool {
 		intent.putExtra("outputX", 200);
 		intent.putExtra("outputY", 150);
 		intent.putExtra("scale", true);
-		intent.putExtra("return-data", true); // 设置true才能有返回
+		intent.putExtra("return-data", true); // 设置true才能有返�?
 		intent.putExtra(MediaStore.EXTRA_OUTPUT, imagePath);
 		intent.putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString());
 		intent.putExtra("noFaceDetection", true); // no face detection
