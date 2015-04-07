@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+    
+	<LinearLayout 
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:orientation="vertical"
+	    android:layout_centerInParent="true">
+	    
+	    <TextView 
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center_horizontal"
+	        android:gravity="center_vertical"
+	        android:text="@string/other_login"
+	        android:textSize="36dp"
+            android:singleLine="true"
+            android:textStyle="bold"
+            android:drawableLeft="@drawable/share"
+            android:drawablePadding="10dp"
+            android:layout_marginBottom="60dp"/>
+	    
+	    
+	    <TextView 
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:id="@+id/tv_login_msg"
+	        android:background="@drawable/msg_login"
+	        android:text="@string/login_with_msg"
+	        android:singleLine="true"
+	        android:gravity="center"
+	        android:textColor="@color/dialog_bg"
+	        android:layout_marginBottom="15dp"
+	        android:textSize="18dp"
+	        android:padding="12dp"/>
+	    
+	    <TextView 
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:id="@+id/tv_login_weibo"
+	        android:background="@drawable/weibo_login"
+	        android:text="@string/login_with_sina_weibo"
+	        android:singleLine="true"
+	        android:gravity="center"
+	        android:textColor="@color/dialog_bg"
+	        android:layout_marginBottom="15dp"
+	        android:textSize="18dp"
+	        android:padding="12dp"/>
+	    
+	    <TextView 
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:id="@+id/tv_login_qq"
+	        android:background="@drawable/qq_login"
+	        android:text="@string/login_with_qq"
+	        android:singleLine="true"
+	        android:gravity="center"
+	        android:textColor="@color/dialog_bg"
+	        android:layout_marginBottom="15dp"
+	        android:textSize="18dp"
+	        android:padding="12dp"/>
+	    
+	    <TextView 
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:id="@+id/tv_login_quit"
+	        android:background="@drawable/shape_file"
+	        android:text="@string/quit"
+	        android:singleLine="true"
+	        android:gravity="center"
+	        android:textColor="@color/dialog_bg"
+	        android:layout_marginBottom="15dp"
+	        android:textSize="18dp"
+	        android:padding="12dp"/>
+	    
+	</LinearLayout>                                                                         
+</RelativeLayout>

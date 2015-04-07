@@ -58,8 +58,8 @@ public class LeftMenu extends Fragment implements OnClickListener {
 			break;
 		
 		case R.id.left_menu_other_login:
-			intent = new Intent(getActivity(), OtherLogin.class);
-			getActivity().startActivity(intent);
+			OtherLogin login = new OtherLogin();
+			login.show(getActivity());
 			break;
 			
 		case R.id.personal_set:

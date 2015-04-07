@@ -5,15 +5,15 @@
     	
     	1、表格中的第一项
     		<ShareSDK 
-        		AppKey="api20" />
+        		AppKey="5ecdfca269e6" />
     	是必须的，其中的AppKey是您在ShareSDK上注册的开发者帐号的AppKey
     	
     	2、所有集成到您项目的平台都应该为其在表格中填写相对应的开发者信息，以新浪微博为例：
     	    <SinaWeibo
                 Id="1"
                 SortId="1"
-                AppKey="568898243"
-                AppSecret="38a4f8204cc784f81f9f0daaf31e02e3"
+                AppKey="2794319855"
+                AppSecret="248ddf8ace14a1c89f9ad02b2aa0314e"
                 RedirectUrl="http://www.mob.com"
                 Enable="true" />
     	其中的SortId是此平台在分享列表中的位置，由开发者自行定义，可以是任何整型数字，数值越大
@@ -48,7 +48,7 @@
     -->
     
     <ShareSDK 
-        AppKey = "5ecdfca269e6"/> <!-- 修改成你在sharesdk后台注册的应用的appkey"-->
+        AppKey = "330bf065e354"/> <!-- 修改成你在sharesdk后台注册的应用的appkey"-->
     
     <!-- ShareByAppClient标识是否使用微博客户端分享，默认是false -->
     <SinaWeibo
@@ -56,7 +56,7 @@
         SortId="1"
         AppKey="2794319855"
         AppSecret="248ddf8ace14a1c89f9ad02b2aa0314e"
-        RedirectUrl="http://open.weibo.com"
+        RedirectUrl="http://www.sharesdk.cn"
         ShareByAppClient="true"
         Enable="true" />
 
