@@ -4,12 +4,11 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.sharesdk.framework.ShareSDK;
-
 import com.gzfgeh.animation.MenuDrawLayout;
 import com.gzfgeh.animation.RoundImageView;
 import com.gzfgeh.myapplication.MyApplication;
 import com.gzfgeh.tools.ImageTool;
+import com.gzfgeh.tools.SetViewMargin;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -22,7 +21,6 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Matrix;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
@@ -144,22 +142,26 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 		fragments.add(soundsFragment);
 		fragments.add(movieFragment);
 		
-		cursorWidth = BitmapFactory.decodeResource(getResources(), R.drawable.cursor).getWidth();
-		DisplayMetrics displayMetrics = new DisplayMetrics();
-		getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-		int screenWidth = displayMetrics.widthPixels;
-		cursorOffset = (screenWidth/4 - cursorWidth) / 2;
-		Matrix matrix = new Matrix();
-		matrix.postTranslate(cursorOffset, 0);
-		cursorView.setImageMatrix(matrix);
-		pageWidth = cursorOffset * 2 + cursorWidth;
-		
 		titleText.setText(R.string.text);
 		textView.setTextColor(getResources().getColor(R.color.title_bg));
 		MenuDrawLayout.drawerLayoutEvent(drawerLayout);
 	}
 
-
+	@Override
+	public void onWindowFocusChanged(boolean hasFocus) {	
+		cursorWidth = cursorView.getWidth();				//all view draw over, so can get this view
+		
+		DisplayMetrics displayMetrics = new DisplayMetrics();
+		getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+		int screenWidth = displayMetrics.widthPixels;		//phone windows width
+		
+		cursorOffset = (screenWidth/4 - cursorWidth) / 2;
+		pageWidth = cursorOffset * 2 + cursorWidth;
+		
+		SetViewMargin.SetViewMarginLeft(cursorView, cursorOffset);	//dynamic set marginLeft
+		super.onWindowFocusChanged(hasFocus);
+	}
+	
 	@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         
@@ -279,32 +281,4 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 		}
 	}
 	
-	private void showShare() {
-		 ShareSDK.initSDK(this);
-//		 OnekeyShare oks = new OnekeyShare();
-//		 //关闭sso授权
-//		 oks.disableSSOWhenAuthorize(); 
-//
-//		// 分享时Notification的图标和文字  2.5.9以后的版本不调用此方法
-//		 //oks.setNotification(R.drawable.ic_launcher, getString(R.string.app_name));
-//		 // title标题，印象笔记、邮箱、信息、微信、人人网和QQ空间使用
-//		 oks.setTitle(getString(R.string.share));
-//		 // titleUrl是标题的网络链接，仅在人人网和QQ空间使用
-//		 oks.setTitleUrl("http://sharesdk.cn");
-//		 // text是分享文本，所有平台都需要这个字段
-//		 oks.setText("我是分享文本");
-//		 // imagePath是图片的本地路径，Linked-In以外的平台都支持此参数
-//		 oks.setImagePath("/sdcard/test.jpg");//确保SDcard下面存在此张图片
-//		 // url仅在微信（包括好友和朋友圈）中使用
-//		 oks.setUrl("http://sharesdk.cn");
-//		 // comment是我对这条分享的评论，仅在人人网和QQ空间使用
-//		 oks.setComment("我是测试评论文本");
-//		 // site是分享此内容的网站名称，仅在QQ空间使用
-//		 oks.setSite(getString(R.string.app_name));
-//		 // siteUrl是分享此内容的网站地址，仅在QQ空间使用
-//		 oks.setSiteUrl("http://sharesdk.cn");
-//
-//		// 启动分享GUI
-//		 oks.show(this);
-		 }
 }

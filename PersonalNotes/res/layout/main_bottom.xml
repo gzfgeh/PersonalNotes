@@ -5,12 +5,11 @@
     android:orientation="vertical"
     android:background="@color/bottom_bg">
     
-    <ImageView 
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+    <View 
+        android:layout_width="50dp"
+        android:layout_height="4dp"
         android:id="@+id/cursor"
-        android:src="@drawable/cursor"
-        android:scaleType="matrix"/>
+        android:background="@color/title_bg"/>
     
     <LinearLayout 
         android:layout_width="match_parent"
