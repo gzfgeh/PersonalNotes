@@ -35,7 +35,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MainActivity extends ActionBarActivity implements OnClickListener, OnPageChangeListener {
-	private View textLayout, soundsLayout, photoLayout, movieLayout;
+	private View cursorView, textLayout, soundsLayout, photoLayout, movieLayout;
 	private TextView textView, soundsView, photoView, movieView;
 	private TextView titleText, titleLeftText, titleRightText;
 	private RoundImageView titleLeftImageView;
@@ -47,7 +47,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 	private ViewPager viewPager;
 	private FragmentPagerAdapter fragmentPagerAdapter;
 	private List<Fragment> fragments = new ArrayList<Fragment>();
-	private ImageView cursorView, titleRightImageView;
+	private ImageView titleRightImageView;
 	private int cursorWidth;
 	private int cursorOffset;
 	private int pageWidth;
@@ -96,7 +96,6 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 	}
 
 	private void initViews() {
-		// TODO Auto-generated method stub
 		textLayout = findViewById(R.id.text_layout);
 		soundsLayout = findViewById(R.id.sounds_layout);
 		photoLayout = findViewById(R.id.photo_layout);
@@ -127,7 +126,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 		else 
 			titleLeftImageView.setImageBitmap(ImageTool.setSDImageView(outputFile.getAbsolutePath()));
 		
-		cursorView = (ImageView) findViewById(R.id.cursor);
+		cursorView = findViewById(R.id.cursor);
 		viewPager = (ViewPager) findViewById(R.id.container);
 		drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		imageView = (RoundImageView) getSupportFragmentManager().

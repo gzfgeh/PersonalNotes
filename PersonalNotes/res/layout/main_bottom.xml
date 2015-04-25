@@ -14,33 +14,32 @@
     <LinearLayout 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:baselineAligned="true">
         
 	    <RelativeLayout 
 		    android:layout_width="0dp"
 		    android:layout_height="fill_parent"
 		    android:layout_weight="1"
 		    android:id="@+id/text_layout">
-		    
-		    <LinearLayout 
-		        android:layout_width="fill_parent"
-		        android:layout_height="wrap_content"
-		        android:layout_centerVertical="true"
-		        android:orientation="vertical">
 		        
-		        <ImageView 
-		            android:layout_width="wrap_content"
-		            android:layout_height="wrap_content"
-		            android:layout_gravity="center_horizontal"
-		            android:background="@drawable/text"/>
-		        
-		        <TextView 
-		            android:layout_width="wrap_content"
-		            android:layout_height="wrap_content"
-		            android:layout_gravity="center_horizontal"
-		            android:id="@+id/text_msg"
-		            android:text="@string/text"/>
-		    </LinearLayout>
+	        <ImageView 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_gravity="center_horizontal"
+	            android:background="@drawable/text"
+	            android:contentDescription="@string/hello_world"
+	            android:layout_alignParentTop="true"
+	            android:layout_centerHorizontal="true"/>
+	        
+	        <TextView 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_gravity="center_horizontal"
+	            android:id="@+id/text_msg"
+	            android:text="@string/text"
+	            android:layout_alignParentBottom="true"
+	            android:layout_centerHorizontal="true"/>
 		</RelativeLayout>
 		
 		<RelativeLayout 
@@ -49,25 +48,24 @@
 		    android:layout_weight="1"
 		    android:id="@+id/photo_layout">
 		    
-		    <LinearLayout 
-		        android:layout_width="fill_parent"
-		        android:layout_height="wrap_content"
-		        android:layout_centerVertical="true"
-		        android:orientation="vertical">
 		        
-		        <ImageView 
-		            android:layout_width="wrap_content"
-		            android:layout_height="wrap_content"
-		            android:layout_gravity="center_horizontal"
-		            android:background="@drawable/photo"/>
-		        
-		        <TextView 
-		            android:layout_width="wrap_content"
-		            android:layout_height="wrap_content"
-		            android:layout_gravity="center_horizontal"
-		            android:id="@+id/photo_msg"
-		            android:text="@string/photo"/>
-		    </LinearLayout>
+	        <ImageView 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_gravity="center_horizontal"
+	            android:background="@drawable/photo"
+	            android:contentDescription="@string/hello_world"
+	            android:layout_alignParentTop="true"
+	            android:layout_centerHorizontal="true"/>
+	        
+	        <TextView 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_gravity="center_horizontal"
+	            android:id="@+id/photo_msg"
+	            android:text="@string/photo"
+	            android:layout_alignParentBottom="true"
+	            android:layout_centerHorizontal="true"/>
 		</RelativeLayout>
 		
 		<RelativeLayout 
@@ -76,25 +74,24 @@
 		    android:layout_weight="1"
 		    android:id="@+id/sounds_layout">
 		    
-		    <LinearLayout 
-		        android:layout_width="fill_parent"
-		        android:layout_height="wrap_content"
-		        android:layout_centerVertical="true"
-		        android:orientation="vertical">
 		        
-		        <ImageView 
-		            android:layout_width="wrap_content"
-		            android:layout_height="wrap_content"
-		            android:layout_gravity="center_horizontal"
-		            android:background="@drawable/sounds"/>
-		        
-		        <TextView 
-		            android:layout_width="wrap_content"
-		            android:layout_height="wrap_content"
-		            android:layout_gravity="center_horizontal"
-		            android:id="@+id/sounds_msg"
-		            android:text="@string/sounds"/>
-		    </LinearLayout>
+	        <ImageView 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_gravity="center_horizontal"
+	            android:background="@drawable/sounds"
+	            android:contentDescription="@string/hello_world"
+	            android:layout_alignParentTop="true"
+	            android:layout_centerHorizontal="true"/>
+	        
+	        <TextView 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_gravity="center_horizontal"
+	            android:id="@+id/sounds_msg"
+	            android:text="@string/sounds"
+	            android:layout_alignParentBottom="true"
+	            android:layout_centerHorizontal="true"/>
 		</RelativeLayout>
 		
 		<RelativeLayout 
@@ -102,26 +99,24 @@
 		    android:layout_height="fill_parent"
 		    android:layout_weight="1"
 		    android:id="@+id/movie_layout">
-		    
-		    <LinearLayout 
-		        android:layout_width="fill_parent"
-		        android:layout_height="wrap_content"
-		        android:layout_centerVertical="true"
-		        android:orientation="vertical">
 		        
-		        <ImageView 
-		            android:layout_width="wrap_content"
-		            android:layout_height="wrap_content"
-		            android:layout_gravity="center_horizontal"
-		            android:background="@drawable/movie"/>
-		        
-		        <TextView 
-		            android:layout_width="wrap_content"
-		            android:layout_height="wrap_content"
-		            android:layout_gravity="center_horizontal"
-		            android:id="@+id/movie_msg"
-		            android:text="@string/movie"/>
-		    </LinearLayout>
+	        <ImageView 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_gravity="center_horizontal"
+	            android:background="@drawable/movie"
+	            android:contentDescription="@string/hello_world"
+	            android:layout_alignParentTop="true"
+	            android:layout_centerHorizontal="true"/>
+	        
+	        <TextView 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_gravity="center_horizontal"
+	            android:id="@+id/movie_msg"
+	            android:text="@string/movie"
+	            android:layout_alignParentBottom="true"
+	            android:layout_centerHorizontal="true"/>
 		</RelativeLayout>
     </LinearLayout>
 	
