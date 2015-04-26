@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.gzfgeh.animation.ColorTrackView;
 import com.gzfgeh.animation.MenuDrawLayout;
 import com.gzfgeh.animation.RoundImageView;
 import com.gzfgeh.myapplication.MyApplication;
@@ -36,7 +37,7 @@ import android.widget.TextView;
 
 public class MainActivity extends ActionBarActivity implements OnClickListener, OnPageChangeListener {
 	private View cursorView, textLayout, soundsLayout, photoLayout, movieLayout;
-	private TextView textView, soundsView, photoView, movieView;
+	private ColorTrackView textView, soundsView, photoView, movieView;
 	private TextView titleText, titleLeftText, titleRightText;
 	private RoundImageView titleLeftImageView;
 	private TextFragment textFragment;
@@ -47,6 +48,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 	private ViewPager viewPager;
 	private FragmentPagerAdapter fragmentPagerAdapter;
 	private List<Fragment> fragments = new ArrayList<Fragment>();
+	private List<ColorTrackView> textList = new ArrayList<ColorTrackView>();
 	private ImageView titleRightImageView;
 	private int cursorWidth;
 	private int cursorOffset;
@@ -89,10 +91,10 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
     }
     
     @SuppressLint("ResourceAsColor") private void resetSelected(){
-		textView.setTextColor(R.color.bottom_bg);
-		soundsView.setTextColor(R.color.bottom_bg);
-		photoView.setTextColor(R.color.bottom_bg);
-		movieView.setTextColor(R.color.bottom_bg);
+//		textView.setTextColor(R.color.bottom_bg);
+//		soundsView.setTextColor(R.color.bottom_bg);
+//		photoView.setTextColor(R.color.bottom_bg);
+//		movieView.setTextColor(R.color.bottom_bg);
 	}
 
 	private void initViews() {
@@ -105,10 +107,10 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 		photoLayout.setOnClickListener(this);
 		movieLayout.setOnClickListener(this);
 		
-		textView = (TextView) findViewById(R.id.text_msg);
-		soundsView = (TextView) findViewById(R.id.sounds_msg);
-		photoView = (TextView) findViewById(R.id.photo_msg);
-		movieView = (TextView) findViewById(R.id.movie_msg);
+		textView = (ColorTrackView) findViewById(R.id.text_msg);
+		soundsView = (ColorTrackView) findViewById(R.id.sounds_msg);
+		photoView = (ColorTrackView) findViewById(R.id.photo_msg);
+		movieView = (ColorTrackView) findViewById(R.id.movie_msg);
 		
 		titleRightImageView = (ImageView) findViewById(R.id.title_right_image);
 		titleRightImageView.setVisibility(View.VISIBLE);
@@ -141,8 +143,13 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 		fragments.add(soundsFragment);
 		fragments.add(movieFragment);
 		
+		textList.add((ColorTrackView)findViewById(R.id.text_msg));
+		textList.add((ColorTrackView)findViewById(R.id.photo_msg));
+		textList.add((ColorTrackView)findViewById(R.id.sounds_msg));
+		textList.add((ColorTrackView)findViewById(R.id.movie_msg));
+		
 		titleText.setText(R.string.text);
-		textView.setTextColor(getResources().getColor(R.color.title_bg));
+		//textView.setTextColor(getResources().getColor(R.color.title_bg));
 		MenuDrawLayout.drawerLayoutEvent(drawerLayout);
 	}
 
@@ -232,6 +239,12 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 			animationStart = animationEnd;
 			animationEnd = (currentPage + percentage) * pageWidth;
 			animation = new TranslateAnimation(animationStart, animationEnd, 0, 0);
+//			ColorTrackView left = textList.get(currentPage);
+//			ColorTrackView right = textList.get(currentPage + 1);
+//			left.setDirection(1);
+//			right.setDirection(0);
+//			left.setProgress(1 - percentage);
+//			right.setProgress(percentage);
 		}
 		animation.setFillAfter(true);
 		cursorView.startAnimation(animation);
@@ -245,21 +258,21 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 		switch (position) {
 		case 0:
 			titleText.setText(R.string.text);
-			textView.setTextColor(getResources().getColor(R.color.title_bg));
+			//textView.setTextColor(getResources().getColor(R.color.title_bg));
 			break;
 			
 		case 1:
 			titleText.setText(R.string.photo);
-			photoView.setTextColor(getResources().getColor(R.color.title_bg));
+			//photoView.setTextColor(getResources().getColor(R.color.title_bg));
 			break;
 			
 		case 2:
 			titleText.setText(R.string.sounds);
-			soundsView.setTextColor(getResources().getColor(R.color.title_bg));
+			//soundsView.setTextColor(getResources().getColor(R.color.title_bg));
 			break;
 		case 3:
 			titleText.setText(R.string.movie);
-			movieView.setTextColor(getResources().getColor(R.color.title_bg));
+			//movieView.setTextColor(getResources().getColor(R.color.title_bg));
 			break;
 		}
 	}

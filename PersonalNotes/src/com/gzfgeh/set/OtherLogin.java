@@ -3,10 +3,9 @@ package com.gzfgeh.set;
 
 import java.util.HashMap;
 
-import javax.security.auth.login.LoginException;
-
 import com.gzfgeh.personalnote.R;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Handler.Callback;
@@ -21,11 +20,15 @@ import cn.sharesdk.framework.ShareSDK;
 import cn.sharesdk.sina.weibo.SinaWeibo;
 import cn.sharesdk.tencent.qq.QQ;
 
-public class OtherLogin extends FakeActivity implements Callback, OnClickListener, PlatformActionListener {
+@SuppressLint("HandlerLeak") public class OtherLogin extends FakeActivity implements Callback, OnClickListener, PlatformActionListener {
+	@SuppressWarnings("unused")
 	private static final int MSG_SMSSDK_CALLBACK = 1;
+	@SuppressWarnings("unused")
 	private static final int MSG_AUTH_CANCEL = 2;
+	@SuppressWarnings("unused")
 	private static final int MSG_AUTH_ERROR= 3;
 	private static final int MSG_AUTH_COMPLETE = 4;
+	@SuppressWarnings("unused")
 	private static final int MSG_USERID_FOUND = 5;
 	private Context context;
 	

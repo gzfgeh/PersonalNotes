@@ -1,10 +1,8 @@
 package com.gzfgeh.customdialog.dialog.effects;
 
 import android.view.View;
-import android.widget.RelativeLayout;
 
 import com.nineoldandroids.animation.ObjectAnimator;
-import com.nineoldandroids.view.ViewHelper;
 
 /**
  * Created by lee on 2014/7/31.

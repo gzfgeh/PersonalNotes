@@ -1,6 +1,5 @@
 package com.gzfgeh.customdialog.dialog.effects;
 
-import android.util.Log;
 import android.view.View;
 
 import com.nineoldandroids.animation.ObjectAnimator;
