@@ -23,16 +23,51 @@ public class ColorTrackView extends View {
 	private int realWidth;
 	private int direction = DIRECTION_LEFT;
 	private static int DIRECTION_LEFT = 0;
-	//private static int DIRECTION_RIGHT = 1;
+	public enum Direction
+	{
+		LEFT , RIGHT ;
+	}
 	
 	
+	public int getTextSize() {
+		return textSize;
+	}
+
+
+	public void setTextSize(int textSize) {
+		this.textSize = textSize;
+		requestLayout();
+		invalidate();
+	}
+
+
 	public void setDirection(int direction) {
 		this.direction = direction;
 	}
+	
+
+	public float getProgress() {
+		return progress;
+	}
+
 
 	public void setProgress(float progress) {
 		this.progress = progress;
+		invalidate();
 	}
+
+	
+	
+	public int getTextChangeColor() {
+		return textChangeColor;
+	}
+
+
+	public void setTextChangeColor(int textChangeColor) {
+		this.textChangeColor = textChangeColor;
+		invalidate();
+	}
+
 
 	public ColorTrackView(Context context) {
 		this(context, null);
@@ -45,7 +80,6 @@ public class ColorTrackView extends View {
 	public ColorTrackView(Context context, AttributeSet attrs, int defStyleAttr) {
 		super(context, attrs, defStyleAttr);
 		
-		paint = new Paint(Paint.ANTI_ALIAS_FLAG);
 		TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.ColorTrackView);
 		textSize = array.getDimensionPixelSize(R.styleable.ColorTrackView_text_size, textSize);
 		text = array.getString(R.styleable.ColorTrackView_text);
@@ -57,8 +91,10 @@ public class ColorTrackView extends View {
 		direction = array.getInt(R.styleable.ColorTrackView_direction, direction);
 		array.recycle();
 		
+		paint = new Paint(Paint.ANTI_ALIAS_FLAG);
 		paint.setTextSize(textSize);
 		textWidth = (int) paint.measureText(text);
+		rect = new Rect();
 		paint.getTextBounds(text, 0, text.length(), rect);  
 	}
 
@@ -107,11 +143,11 @@ public class ColorTrackView extends View {
 			break;
 			
 		case MeasureSpec.AT_MOST:
-			result = Math.min(rect.width(), size);
+			result = Math.min(textWidth, size);
 			break;
 			
 		case MeasureSpec.UNSPECIFIED:
-			result = rect.width();
+			result = textWidth;
 			break;
 			
 		default:
@@ -137,24 +173,24 @@ public class ColorTrackView extends View {
 		drawText(canvas, textChangeColor, (int) (startX +(1-progress)*textWidth), startX+textWidth ); 
 	}
 
-	private void drawText(Canvas canvas, int textChangeColor, int i, int j) {
-		paint.setColor(textChangeColor);
+	private void drawText(Canvas canvas, int color, int i, int j) {
+		paint.setColor(color);
 		canvas.save(Canvas.CLIP_SAVE_FLAG);
-		canvas.clipRect(startX, 0, j, getMeasuredHeight());
-		canvas.drawText(text, startX, getMeasuredHeight()/2 + rect.height()/2, paint);
+		canvas.clipRect(i, 0, j, getMeasuredHeight());
+		canvas.drawText(text, startX, getMeasuredHeight()/2 + rect.height()/3, paint);
 		canvas.restore();
 	}
 
 	private void drawOriginRight(Canvas canvas, int passX) {
-		drawText(canvas, textChangeColor, startX, (int) (startX +(1-progress)*textWidth) );
+		drawText(canvas, textOriginColor, startX, (int) (startX +(1-progress)*textWidth) );
 	}
 
 	private void drawOriginLeft(Canvas canvas, int passX) {
-		drawText(canvas, textChangeColor, (int) (startX + progress * textWidth), startX+textWidth );
+		drawText(canvas, textOriginColor, passX, startX+textWidth );
 	}
 
 	private void drawChangeLeft(Canvas canvas, int passX) {
-		drawText(canvas, textChangeColor, startX, (int) (startX + progress * textWidth) );
+		drawText(canvas, textChangeColor, startX, passX );
 	}
 	
 	

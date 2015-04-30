@@ -18,7 +18,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -37,6 +36,7 @@ import android.widget.TextView;
 
 public class MainActivity extends ActionBarActivity implements OnClickListener, OnPageChangeListener {
 	private View cursorView, textLayout, soundsLayout, photoLayout, movieLayout;
+	@SuppressWarnings("unused")
 	private ColorTrackView textView, soundsView, photoView, movieView;
 	private TextView titleText, titleLeftText, titleRightText;
 	private RoundImageView titleLeftImageView;
@@ -74,28 +74,19 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 				
 				@Override
 				public int getCount() {
-					// TODO Auto-generated method stub
 					return fragments.size();
 				}
 				
 				@Override
 				public Fragment getItem(int position) {
-					// TODO Auto-generated method stub
 					return fragments.get(position);
 				}
 			};
-            
+			viewPager.setCurrentItem(0);
 			viewPager.setAdapter(fragmentPagerAdapter);
 			viewPager.setOnPageChangeListener(this);
         }
     }
-    
-    @SuppressLint("ResourceAsColor") private void resetSelected(){
-//		textView.setTextColor(R.color.bottom_bg);
-//		soundsView.setTextColor(R.color.bottom_bg);
-//		photoView.setTextColor(R.color.bottom_bg);
-//		movieView.setTextColor(R.color.bottom_bg);
-	}
 
 	private void initViews() {
 		textLayout = findViewById(R.id.text_layout);
@@ -148,8 +139,8 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 		textList.add((ColorTrackView)findViewById(R.id.sounds_msg));
 		textList.add((ColorTrackView)findViewById(R.id.movie_msg));
 		
+		viewPager.setCurrentItem(0);
 		titleText.setText(R.string.text);
-		//textView.setTextColor(getResources().getColor(R.color.title_bg));
 		MenuDrawLayout.drawerLayoutEvent(drawerLayout);
 	}
 
@@ -170,8 +161,6 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 	
 	@Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
@@ -187,7 +176,6 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 
 	@Override
 	public void onClick(View view) {
-		// TODO Auto-generated method stub
 		switch (view.getId()) {
 		case R.id.text_layout:
 			viewPager.setCurrentItem(0);
@@ -222,7 +210,6 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 
 	@Override
 	public void onPageScrollStateChanged(int position) {
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -239,47 +226,46 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 			animationStart = animationEnd;
 			animationEnd = (currentPage + percentage) * pageWidth;
 			animation = new TranslateAnimation(animationStart, animationEnd, 0, 0);
-//			ColorTrackView left = textList.get(currentPage);
-//			ColorTrackView right = textList.get(currentPage + 1);
-//			left.setDirection(1);
-//			right.setDirection(0);
-//			left.setProgress(1 - percentage);
-//			right.setProgress(percentage);
+			ColorTrackView left = textList.get(currentPage);
+			ColorTrackView right = textList.get((currentPage + 1) % textList.size());
+			left.setDirection(1);
+			right.setDirection(0);
+			left.setProgress(1 - percentage);
+			right.setProgress(percentage);
+			
 		}
 		animation.setFillAfter(true);
 		cursorView.startAnimation(animation);
+		
 	}
 
 
 	@Override
 	public void onPageSelected(int position) {
-		resetSelected();
-		
 		switch (position) {
 		case 0:
 			titleText.setText(R.string.text);
-			//textView.setTextColor(getResources().getColor(R.color.title_bg));
 			break;
 			
 		case 1:
 			titleText.setText(R.string.photo);
-			//photoView.setTextColor(getResources().getColor(R.color.title_bg));
 			break;
 			
 		case 2:
 			titleText.setText(R.string.sounds);
-			//soundsView.setTextColor(getResources().getColor(R.color.title_bg));
 			break;
+			
 		case 3:
 			titleText.setText(R.string.movie);
-			//movieView.setTextColor(getResources().getColor(R.color.title_bg));
+			break;
+			
+		default:
 			break;
 		}
 	}
 	
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
-		// TODO Auto-generated method stub
 		if (requestCode == LeftMenu.REQUEST_CODE){
 			if (resultCode == RESULT_OK){
 				

@@ -38,11 +38,11 @@
 	            android:layout_height="wrap_content"
 	            android:layout_gravity="center_horizontal"
 	            android:id="@+id/text_msg"
-	            android:text="@string/text"
+	            gzfgeh:text="@string/text"
 	            android:layout_alignParentBottom="true"
 	            android:layout_centerHorizontal="true"
 	            gzfgeh:text_size="24dp"
-	            gzfgeh:progress="1"
+	            gzfgeh:progress="0"
 	            gzfgeh:text_origin_color="@android:color/black"
 	            gzfgeh:text_change_color="@color/title_bg"/>
 		</RelativeLayout>
@@ -52,8 +52,6 @@
 		    android:layout_height="fill_parent"
 		    android:layout_weight="1"
 		    android:id="@+id/photo_layout">
-		    
-		        
 	        <ImageView 
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
@@ -68,11 +66,11 @@
 	            android:layout_height="wrap_content"
 	            android:layout_gravity="center_horizontal"
 	            android:id="@+id/photo_msg"
-	            android:text="@string/photo"
+	            gzfgeh:text="@string/photo"
 	            android:layout_alignParentBottom="true"
 	            android:layout_centerHorizontal="true"
 	            gzfgeh:text_size="24dp"
-	            gzfgeh:progress="1"
+	            gzfgeh:progress="0"
 	            gzfgeh:text_origin_color="@android:color/black"
 	            gzfgeh:text_change_color="@color/title_bg"/>
 		</RelativeLayout>
@@ -98,13 +96,13 @@
 	            android:layout_height="wrap_content"
 	            android:layout_gravity="center_horizontal"
 	            android:id="@+id/sounds_msg"
-	            android:text="@string/sounds"
+	            gzfgeh:text="@string/sounds"
 	            android:layout_alignParentBottom="true"
 	            android:layout_centerHorizontal="true"
 	            gzfgeh:text_size="24dp"
-	            gzfgeh:progress="1"
-	            gzfgeh:text_origin_color="@android:color/black"
-	            gzfgeh:text_change_color="@color/title_bg"/>
+	            gzfgeh:progress="0"
+	            gzfgeh:text_change_color="@color/title_bg"
+	            gzfgeh:text_origin_color="@android:color/black"/>
 		</RelativeLayout>
 		
 		<RelativeLayout 
@@ -127,13 +125,13 @@
 	            android:layout_height="wrap_content"
 	            android:layout_gravity="center_horizontal"
 	            android:id="@+id/movie_msg"
-	            android:text="@string/movie"
+	            gzfgeh:text="@string/movie"
 	            android:layout_alignParentBottom="true"
 	            android:layout_centerHorizontal="true"
 	            gzfgeh:text_size="24dp"
-	            gzfgeh:progress="1"
-	            gzfgeh:text_origin_color="@android:color/black"
-	            gzfgeh:text_change_color="@color/title_bg"/>
+	            gzfgeh:progress="0"
+	            gzfgeh:text_change_color="@color/title_bg"
+	            gzfgeh:text_origin_color="@android:color/black"/>
 		</RelativeLayout>
     </LinearLayout>
 	
