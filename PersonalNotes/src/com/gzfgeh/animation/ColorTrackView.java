@@ -23,52 +23,10 @@ public class ColorTrackView extends View {
 	private int realWidth;
 	private int direction = DIRECTION_LEFT;
 	private static int DIRECTION_LEFT = 0;
-	public enum Direction
-	{
+	public enum Direction{
 		LEFT , RIGHT ;
 	}
 	
-	
-	public int getTextSize() {
-		return textSize;
-	}
-
-
-	public void setTextSize(int textSize) {
-		this.textSize = textSize;
-		requestLayout();
-		invalidate();
-	}
-
-
-	public void setDirection(int direction) {
-		this.direction = direction;
-	}
-	
-
-	public float getProgress() {
-		return progress;
-	}
-
-
-	public void setProgress(float progress) {
-		this.progress = progress;
-		invalidate();
-	}
-
-	
-	
-	public int getTextChangeColor() {
-		return textChangeColor;
-	}
-
-
-	public void setTextChangeColor(int textChangeColor) {
-		this.textChangeColor = textChangeColor;
-		invalidate();
-	}
-
-
 	public ColorTrackView(Context context) {
 		this(context, null);
 	}
@@ -177,7 +135,7 @@ public class ColorTrackView extends View {
 		paint.setColor(color);
 		canvas.save(Canvas.CLIP_SAVE_FLAG);
 		canvas.clipRect(i, 0, j, getMeasuredHeight());
-		canvas.drawText(text, startX, getMeasuredHeight()/2 + rect.height()/3, paint);
+		canvas.drawText(text, startX, getMeasuredHeight()/2 + rect.height()/2, paint);
 		canvas.restore();
 	}
 
@@ -191,6 +149,53 @@ public class ColorTrackView extends View {
 
 	private void drawChangeLeft(Canvas canvas, int passX) {
 		drawText(canvas, textChangeColor, startX, passX );
+	}
+	
+
+	
+	public int getTextSize() {
+		return textSize;
+	}
+
+
+	public void setTextSize(int textSize) {
+		this.textSize = textSize;
+		requestLayout();
+		invalidate();
+	}
+
+
+	public void setDirection(int direction) {
+		this.direction = direction;
+	}
+	
+
+	public float getProgress() {
+		return progress;
+	}
+
+
+	public void setProgress(float progress) {
+		this.progress = progress;
+		invalidate();
+	}
+
+	public int getTextOriginColor() {
+		return textOriginColor;
+	}
+
+	public void setTextOriginColor(int textOriginColor) {
+		this.textOriginColor = textOriginColor;
+		invalidate();
+	}
+
+	public int getTextChangeColor() {
+		return textChangeColor;
+	}
+
+	public void setTextChangeColor(int textChangeColor) {
+		this.textChangeColor = textChangeColor;
+		invalidate();
 	}
 	
 	

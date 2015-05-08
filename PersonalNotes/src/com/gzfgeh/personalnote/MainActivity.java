@@ -36,7 +36,6 @@ import android.widget.TextView;
 
 public class MainActivity extends ActionBarActivity implements OnClickListener, OnPageChangeListener {
 	private View cursorView, textLayout, soundsLayout, photoLayout, movieLayout;
-	@SuppressWarnings("unused")
 	private ColorTrackView textView, soundsView, photoView, movieView;
 	private TextView titleText, titleLeftText, titleRightText;
 	private RoundImageView titleLeftImageView;
@@ -82,8 +81,8 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 					return fragments.get(position);
 				}
 			};
-			viewPager.setCurrentItem(0);
 			viewPager.setAdapter(fragmentPagerAdapter);
+			viewPager.setCurrentItem(0);
 			viewPager.setOnPageChangeListener(this);
         }
     }
@@ -134,12 +133,12 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 		fragments.add(soundsFragment);
 		fragments.add(movieFragment);
 		
-		textList.add((ColorTrackView)findViewById(R.id.text_msg));
-		textList.add((ColorTrackView)findViewById(R.id.photo_msg));
-		textList.add((ColorTrackView)findViewById(R.id.sounds_msg));
-		textList.add((ColorTrackView)findViewById(R.id.movie_msg));
+		textList.add(textView);
+		textList.add(photoView);
+		textList.add(soundsView);
+		textList.add(movieView);
+		textView.setProgress(1);
 		
-		viewPager.setCurrentItem(0);
 		titleText.setText(R.string.text);
 		MenuDrawLayout.drawerLayoutEvent(drawerLayout);
 	}
@@ -210,7 +209,10 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 
 	@Override
 	public void onPageScrollStateChanged(int position) {
-		
+		textList.get(position).setProgress(1);
+		for (int i = 0; i < 4 && i != position; i++) {
+			textList.get(i).setProgress(0);
+		}
 	}
 
 
@@ -227,16 +229,14 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 			animationEnd = (currentPage + percentage) * pageWidth;
 			animation = new TranslateAnimation(animationStart, animationEnd, 0, 0);
 			ColorTrackView left = textList.get(currentPage);
-			ColorTrackView right = textList.get((currentPage + 1) % textList.size());
+			ColorTrackView right = textList.get(currentPage + 1);
 			left.setDirection(1);
 			right.setDirection(0);
 			left.setProgress(1 - percentage);
 			right.setProgress(percentage);
-			
 		}
 		animation.setFillAfter(true);
 		cursorView.startAnimation(animation);
-		
 	}
 
 
