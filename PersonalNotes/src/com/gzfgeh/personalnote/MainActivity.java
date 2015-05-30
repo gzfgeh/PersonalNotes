@@ -24,8 +24,6 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
@@ -58,7 +56,8 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 	
 	private MyApplication myApplication;
 	private File outputFile;
-	
+	private boolean isBottomClick;
+	private int index;
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -141,6 +140,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 		
 		titleText.setText(R.string.text);
 		MenuDrawLayout.drawerLayoutEvent(drawerLayout);
+		isBottomClick = false;
 	}
 
 	@Override
@@ -158,20 +158,6 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 		super.onWindowFocusChanged(hasFocus);
 	}
 	
-	@Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
 
 	@Override
 	public void onClick(View view) {
@@ -204,14 +190,18 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 		default:
 			break;
 		}
+		isBottomClick = true;
 	}
 
 
 	@Override
 	public void onPageScrollStateChanged(int position) {
-		textList.get(position).setProgress(1);
-		for (int i = 0; i < 4 && i != position; i++) {
-			textList.get(i).setProgress(0);
+		if (isBottomClick){
+			for (int i = 0; i < 4; i++) {
+				textList.get(i).setProgress(0);
+			}
+			textList.get(index).setProgress(1);
+			isBottomClick = false;
 		}
 	}
 
@@ -262,6 +252,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 		default:
 			break;
 		}
+		index = position;
 	}
 	
 	@Override

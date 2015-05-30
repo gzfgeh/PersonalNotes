@@ -132,8 +132,8 @@ public class PersonalInfo extends Activity implements OnClickListener {
 			break;
 			
 		case R.id.region_select:
-			Intent intent = new Intent(this, RegionSelect.class);
-			startActivityForResult(intent, REQUEST_CODE);
+			//Intent intent = new Intent(this, RegionSelect.class);
+			//startActivityForResult(intent, REQUEST_CODE);
 			break;
 		case R.id.email_addr_select:
 			emailDialogShow(view);
@@ -334,7 +334,7 @@ public class PersonalInfo extends Activity implements OnClickListener {
         linearLayoutMain.setLayoutParams(new LayoutParams(  
                 LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));  
         ListView listView = new ListView(this); 
-        listView.setFadingEdgeLength(0);	//½â¾öÍÏÀ­µ½ÉÏ¶¥ÏÂ±ßµÄÒõÓ°
+        listView.setFadingEdgeLength(0);	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¶ï¿½ï¿½Â±ßµï¿½ï¿½ï¿½Ó°
         listView.setAdapter(adapter);
         linearLayoutMain.addView(listView);
         

@@ -4,7 +4,6 @@ import java.io.File;
 
 import com.gzfgeh.animation.RoundImageView;
 import com.gzfgeh.myapplication.MyApplication;
-import com.gzfgeh.set.OtherLogin;
 import com.gzfgeh.set.PersonalInfo;
 import com.gzfgeh.set.Setting;
 import com.gzfgeh.tools.ImageTool;
@@ -58,8 +57,8 @@ public class LeftMenu extends Fragment implements OnClickListener {
 			break;
 		
 		case R.id.left_menu_other_login:
-			OtherLogin login = new OtherLogin();
-			login.show(getActivity());
+			//OtherLogin login = new OtherLogin();
+			//login.show(getActivity());
 			break;
 			
 		case R.id.personal_set:
