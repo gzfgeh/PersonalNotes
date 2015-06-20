@@ -47,8 +47,6 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 	private List<Fragment> fragments = new ArrayList<Fragment>();
 	private List<ColorTrackView> textList = new ArrayList<ColorTrackView>();
 	private ImageView titleRightImageView;
-	private int cursorWidth;
-	private int cursorOffset;
 	private int pageWidth;
 	private float animationStart, animationEnd;
 	private DrawerLayout drawerLayout;
@@ -145,17 +143,18 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 
 	@Override
 	public void onWindowFocusChanged(boolean hasFocus) {	
-		cursorWidth = cursorView.getWidth();				//all view draw over, so can get this view
-		
-		DisplayMetrics displayMetrics = new DisplayMetrics();
-		getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-		int screenWidth = displayMetrics.widthPixels;		//phone windows width
-		
-		cursorOffset = (screenWidth/4 - cursorWidth) / 2;
-		pageWidth = cursorOffset * 2 + cursorWidth;
-		
-		SetViewMargin.SetViewMarginLeft(cursorView, cursorOffset);	//dynamic set marginLeft
-		super.onWindowFocusChanged(hasFocus);
+		if (hasFocus && cursorView != null){
+			int cursorWidth = cursorView.getWidth();				//all view draw over, so can get this view
+			
+			DisplayMetrics displayMetrics = new DisplayMetrics();
+			getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+			int screenWidth = displayMetrics.widthPixels;		//phone windows width
+			
+			int cursorOffset = (screenWidth/4 - cursorWidth) / 2;
+			pageWidth = cursorOffset * 2 + cursorWidth;
+			
+			SetViewMargin.SetViewMarginLeft(cursorView, cursorOffset);	//dynamic set marginLeft
+		}
 	}
 	
 
