@@ -55,7 +55,8 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 	private MyApplication myApplication;
 	private File outputFile;
 	private boolean isBottomClick;
-	private int index;
+	private int index = 0;
+	int cursorOffset;
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,25 +64,26 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
         
-        if (savedInstanceState == null) {
-            initViews();
-            fragmentManager = getSupportFragmentManager();
-            fragmentPagerAdapter = new FragmentPagerAdapter(fragmentManager) {
-				
-				@Override
-				public int getCount() {
-					return fragments.size();
-				}
-				
-				@Override
-				public Fragment getItem(int position) {
-					return fragments.get(position);
-				}
-			};
-			viewPager.setAdapter(fragmentPagerAdapter);
-			viewPager.setCurrentItem(0);
-			viewPager.setOnPageChangeListener(this);
-        }
+        if (savedInstanceState != null)
+			index = savedInstanceState.getInt("index");
+        
+        initViews();
+        fragmentManager = getSupportFragmentManager();
+        fragmentPagerAdapter = new FragmentPagerAdapter(fragmentManager) {
+			
+			@Override
+			public int getCount() {
+				return fragments.size();
+			}
+			
+			@Override
+			public Fragment getItem(int position) {
+				return fragments.get(position);
+			}
+		};
+		viewPager.setAdapter(fragmentPagerAdapter);
+		viewPager.setCurrentItem(index);
+		viewPager.setOnPageChangeListener(this);
     }
 
 	private void initViews() {
@@ -134,7 +136,8 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 		textList.add(photoView);
 		textList.add(soundsView);
 		textList.add(movieView);
-		textView.setProgress(1);
+		textList.get(index).setProgress(1);
+		//textView.setProgress(1);
 		
 		titleText.setText(R.string.text);
 		MenuDrawLayout.drawerLayoutEvent(drawerLayout);
@@ -143,17 +146,17 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 
 	@Override
 	public void onWindowFocusChanged(boolean hasFocus) {	
-		if (hasFocus && cursorView != null){
+		if (hasFocus){
 			int cursorWidth = cursorView.getWidth();				//all view draw over, so can get this view
 			
 			DisplayMetrics displayMetrics = new DisplayMetrics();
 			getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
 			int screenWidth = displayMetrics.widthPixels;		//phone windows width
 			
-			int cursorOffset = (screenWidth/4 - cursorWidth) / 2;
+			cursorOffset = (screenWidth/4 - cursorWidth) / 2;
 			pageWidth = cursorOffset * 2 + cursorWidth;
 			
-			SetViewMargin.SetViewMarginLeft(cursorView, cursorOffset);	//dynamic set marginLeft
+			SetViewMargin.SetViewMarginLeft(cursorView, cursorOffset + index * pageWidth);	//dynamic set marginLeft
 		}
 	}
 	
@@ -209,6 +212,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 	public void onPageScrolled(int currentPage, float percentage, int percentagePix) {
 		Animation animation = null;
 		if (percentage == 0){
+			SetViewMargin.SetViewMarginLeft(cursorView, cursorOffset);
 			animationStart = currentPage * pageWidth;
 			animationEnd = animationStart;
 			animation = new TranslateAnimation(animationStart, animationEnd, 0, 0);
@@ -258,7 +262,6 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if (requestCode == LeftMenu.REQUEST_CODE){
 			if (resultCode == RESULT_OK){
-				
 				Intent intent = getIntent();
 				if (intent != null){
 					byte [] bis=intent.getByteArrayExtra("Bitmap");  
@@ -268,5 +271,12 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 			}
 		}
 	}
+
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+		outState.putInt("index", index);
+	}
+	
 	
 }
