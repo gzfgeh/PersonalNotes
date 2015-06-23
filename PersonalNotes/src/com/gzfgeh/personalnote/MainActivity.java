@@ -56,7 +56,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 	private File outputFile;
 	private boolean isBottomClick;
 	private int index = 0;
-	int cursorOffset;
+	private int cursorOffset;
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
